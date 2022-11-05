@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../post/Post'
-import Kyle from '../kyle/Kyle'
 import "./Feed.css";
 
 const Feed = ({ navigate }) => {
@@ -82,7 +81,6 @@ const Feed = ({ navigate }) => {
             (post) => (<Post post={post} key={post._id} />)
           ).reverse()}
         </div>
-        <Kyle />
       </>
     )
   } else {
