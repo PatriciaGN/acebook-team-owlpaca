@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-  timestamp: Date,
+  created: {
+    type: Date,
+    default: Date.now,
+  },
   imageURLs: [String],
   message: {
     type: String,

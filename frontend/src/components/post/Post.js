@@ -2,15 +2,19 @@ import React from 'react';
 import Comments from '../comments/Comments'
 import Hates from '../hates/Hates'
 import "./Post.css";
+const moment = require('moment');
 
 const Post = ({ post }) => {
+  const fullDate = new Date(post.created);
+  const timestamp = moment(fullDate).format('MMMM Do YYYY h:mm:ss a');
+
   return (
     <article data-cy="post" key={post._id}>
       <div class="header-container">
         <img class="profile-image" src='https://iili.io/mVK9G2.png' alt='kyle' />
         <div class="name-and-time-container">
           <div class="username">{"{ Name }"}</div>
-          <div class="post-time">{"{ Post time }"}</div>
+          <div class="post-time">{ timestamp }</div>
         </div>
       </div>
 
