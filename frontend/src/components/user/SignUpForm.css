@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-size: 18px;
+    line-height: 20px;
+    color: #bbbbbb;
+    background-color: #000084;
+    text-align: center;
+    margin-top: 10em;
+}
+
+form {
+    display: inline-block;
+    margin-top: 10em;
+}
+
+.form-sign-up {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    border: 1px solid #e5e5e5;
+}
+
+.form-sign-up .form-signin-heading, .form-signin .checkbox {
+    margin-bottom: 10px;
+}
+h2 {
+    font-size: 18px;
+    text-align: center;
+    white-space: nowrap;
+}
+
