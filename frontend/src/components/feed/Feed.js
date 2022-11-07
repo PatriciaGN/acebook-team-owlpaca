@@ -7,7 +7,7 @@ import CreatePost from '../createPost/CreatePost';
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
-  
+
   useEffect(() => {
     fetchPosts()
   }, [])
@@ -27,7 +27,7 @@ const Feed = ({ navigate }) => {
         });
     }
   }
-  
+
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -36,14 +36,14 @@ const Feed = ({ navigate }) => {
 
   if (token) {
     return (
-     <>
+      <>
         <div id="post-body">
           <h2 id="posts-heading">Posts</h2>
           <button id='logout-button' onClick={logout}>
             Just leave.
           </button>
           <div id="message-box">
-            <CreatePost  fetchPosts={fetchPosts} navigate={navigate}/>
+            <CreatePost fetchPosts={fetchPosts} navigate={navigate} />
           </div>
           <div id='feed' role="feed">
             {posts.map(
