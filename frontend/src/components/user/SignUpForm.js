@@ -80,6 +80,9 @@ const SignUpForm = ({ navigate }) => {
           /><br></br>
           <input id="submit" type="submit" value="Submit" />
         </form>
+        <div>
+        <img src={require('./Kylepixel.png')} />
+        </div>
         <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
         <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
         <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
