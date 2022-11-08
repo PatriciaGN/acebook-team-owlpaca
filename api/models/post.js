@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-  timestamp: Date,
+  created: {
+    type: Date,
+    default: Date.now,
+  },
   imageURL: String,
   message: {
     type: String,
@@ -13,7 +16,8 @@ const PostSchema = new mongoose.Schema({
     },
     required: [true],
   },
-});
+},
+);
 
 const Post = mongoose.model('Post', PostSchema);
 
