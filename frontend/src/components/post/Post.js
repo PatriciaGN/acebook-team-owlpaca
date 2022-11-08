@@ -1,9 +1,34 @@
-import React from 'react';
-import Comments from '../comments/Comments'
+import React, { useEffect, useState } from 'react';
+import Comment from '../comments/Comments'
 import Hates from '../hates/Hates'
 import "./Post.css";
+import NewComment from '../newComment/NewComment'
 
-const Post = ({ post }) => {
+const Post = ({ post, navigate }) => {
+  const [comments, setComments] = useState([]);
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
+  
+  useEffect(() => {
+    fetchComments()
+  }, [])
+
+  const fetchComments = () => {
+    if (token) {
+      fetch('/comments', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then(async (data) => {
+          window.localStorage.setItem('token', data.token);
+          setToken(window.localStorage.getItem('token'));
+          setComments(data.comments);
+        });
+    }
+  }
+
+  if (token) {
   return (
     <article data-cy="post" key={post._id}>
       <div class="header-container">
@@ -23,9 +48,20 @@ const Post = ({ post }) => {
       </div>
     
       <Hates />
-      <Comments />
+      <div id="message-box">
+            <NewComment  fetchComments={fetchComments}/>
+      </div>
+      <div id='feed' role='feed'>
+        {comments.map(
+          (comment) => (<Comment comment={comment} key={comment._id} />)
+         ).reverse()}
+      </div>
+ 
     </article>
   )
+  } else {
+    navigate('/login')
+  }
 }
 
 export default Post;

@@ -27,7 +27,6 @@ const Feed = ({ navigate }) => {
         });
     }
   }
-  
 
   const logout = () => {
     window.localStorage.removeItem("token");
