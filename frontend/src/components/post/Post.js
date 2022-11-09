@@ -34,7 +34,7 @@ const Post = ({ post, navigate }) => {
       <div class="header-container">
         <img class="profile-image" src='https://iili.io/mVK9G2.png' alt='kyle' />
         <div class="name-and-time-container">
-          <div class="username">{post.author.usersName}</div>
+          <div class="username">{post.author.usersName} grumbled</div>
           <div class="post-time">{"{ Post time }"}</div>
         </div>
       </div>

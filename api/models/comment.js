@@ -12,7 +12,11 @@ const CommentSchema = new mongoose.Schema({
   commentPostId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post'
-  }
+  },
+  commentCreated: {
+    type: Date,
+    default: Date.now,
+  },
 })
 
 const Comment = mongoose.model('Comment', CommentSchema);

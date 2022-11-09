@@ -12,6 +12,7 @@ const PostsController = {
       res.status(200).json({ posts: posts, token: token, author: req.user_id });
     });
   },
+
   Create: (req, res) => {
     const newPost = {
       message: req.body.message,
