@@ -5,6 +5,7 @@ const Post = require('../../models/post');
 const User = require('../../models/user');
 const TokenGenerator = require('../../models/token_generator');
 const JWT = require('jsonwebtoken');
+const { post } = require('superagent');
 let token;
 
 describe('/posts', () => {
@@ -165,23 +166,13 @@ describe('/posts', () => {
       await post1.save();
 
       response = await request(app)
-        .post('/posts')
+        .patch('/posts')
         .set('Authorization', `Bearer ${token}`)
-        .send({ message: 'hello world', token: token });
+        .send({ _id: post1._id, agree_or_disagree: 'agree', token: token });
 
-      await response.findOneAndUpdate(
-        { _id: post1._id },
-        { $inc: { agrees: 1 } }
-      );
+      let post = await Post.findOne({ _id: post1.id });
 
-      console.log(post1._id);
-      console.log(post1.agrees);
-
-      let posts = await Post.find();
-
-      expect(posts[0].message).toEqual('hello world');
-      let agrees = response.body.posts.find((post) => post._id === post1.id);
-      expect(agrees).toEqual([2]);
+      expect(post.agrees).toEqual(1);
     });
   });
 });
