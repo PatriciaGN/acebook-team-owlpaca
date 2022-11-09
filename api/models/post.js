@@ -1,8 +1,19 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-  timestamp: Date,
   imageURLs: [String],
+  created: {
+    type: Date,
+    default: Date.now,
+  },
+  agrees: {
+    type: Number,
+    default: 0,
+  },
+  disagrees: {
+    type: Number,
+    default: 0,
+  },
   message: {
     type: String,
     validate: {
