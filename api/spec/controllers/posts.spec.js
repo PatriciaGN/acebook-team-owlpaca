@@ -158,4 +158,30 @@ describe('/posts', () => {
       expect(response.body.token).toEqual(undefined);
     });
   });
+
+  describe('PATCH when token is present', () => {
+    test('updates the number of likes', async () => {
+      let post1 = new Post({ message: 'hola!' });
+      await post1.save();
+
+      response = await request(app)
+        .post('/posts')
+        .set('Authorization', `Bearer ${token}`)
+        .send({ message: 'hello world', token: token });
+
+      await response.findOneAndUpdate(
+        { _id: post1._id },
+        { $inc: { agrees: 1 } }
+      );
+
+      console.log(post1._id);
+      console.log(post1.agrees);
+
+      let posts = await Post.find();
+
+      expect(posts[0].message).toEqual('hello world');
+      let agrees = response.body.posts.find((post) => post._id === post1.id);
+      expect(agrees).toEqual([2]);
+    });
+  });
 });
