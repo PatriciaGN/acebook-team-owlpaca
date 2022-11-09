@@ -23,16 +23,19 @@ const PostsController = {
     });
   },
 
-  AddAgree: (req, res) => {
-    let findAndUpdate = async (id) => {
+  AddAgreeOrDisagree: (req, res) => {
+    let findAndUpdate = async (id, agreeOrDisagree) => {
       const filter = { _id: id };
-      console.log(filter);
-      console.log(id);
-
-      const update = { $inc: { agrees: 1 } };
-      let post = await Post.findOneAndUpdate(filter, update);
+      if (agreeOrDisagree === 'agree') {
+        let update = { $inc: { agrees: 1 } };
+        let post = await Post.findOneAndUpdate(filter, update);
+      } else if (agreeOrDisagree === 'disagree') {
+        let update = { $inc: { disagrees: 1 } };
+        let post = await Post.findOneAndUpdate(filter, update);
+      }
     };
-    findAndUpdate(req.body._id)
+
+    findAndUpdate(req.body._id, req.body.agree_or_disagree)
       .then(() => {
         res.status(204).json();
       })
