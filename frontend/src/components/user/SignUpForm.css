@@ -1,6 +1,6 @@
 body {
-    margin: 0;
-    font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+    margin: auto;
+    font-family: 'TheGoodMonolith', sans-serif;
     font-size: 18px;
     line-height: 20px;
     color: #bbbbbb;
@@ -8,6 +8,30 @@ body {
     text-align: center;
     margin-top: 2em;
 }
+
+.column1 {
+    text-align: center;
+    width: 100%;
+    padding: auto;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0px;
+    align-items: center;
+    justify-items: center;
+}
+
+.grumpy-book-logo {
+    font-family: 'Kemco Pixel', sans-serif;
+    font-size: 40px;
+    color: white;  
+    text-shadow: 2px 2px black;                               
+}
+
+#submit {
+    box-shadow: 3px 3px black;
+}
+
+
 
 form {
     display: inline-block;
@@ -17,16 +41,62 @@ form {
 .form-sign-up {
     max-width: 300px;
     padding: 19px 29px 29px;
-    margin: 0 auto 20px;
-    border: 1px solid #e5e5e5;
+    margin: 0 auto;
+    background-color: darkred;
+
 }
 
 .form-sign-up .form-signin-heading, .form-signin .checkbox {
     margin-bottom: 10px;
+
 }
 h2 {
     font-size: 18px;
     text-align: center;
     white-space: nowrap;
+    font-family: 'TheGoodMonolith', sans-serif;
+}
+
+input {
+    font-family: 'TheGoodMonolith', sans-serif;
+}
+
+.box {
+    width: 300px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: 900;
+    color: black;
+    font-family: 'TheGoodMonolith', sans-serif;
+    position:relative;
+  }
+
+  .sb1:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid white;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    border-bottom: 10px solid transparent;
+    right: -20px;
+    top: 50px;
+
+  }
+
+img {
+    -webkit-animation: mover 0.25s infinite  alternate;
+    animation: mover 0.25s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
 }
 

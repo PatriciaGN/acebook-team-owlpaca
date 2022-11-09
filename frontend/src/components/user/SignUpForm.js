@@ -54,40 +54,51 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
+    <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
+    </link>
+    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet">
+    </link>   
     <body>
-        <h1 class="form-signin-heading">Sign-up</h1>
+      <h1 class="grumpy-book-logo">GrumpyBook</h1>
+      <div class="column1">
         <form class="form-sign-up" onSubmit={handleSubmit}>
-          <input
-            placeholder="Email"
-            id="email"
-            type="text"
-            value={email}
-            onChange={handleEmailChange}
-          /><br></br>
-          <input
-            placeholder="Password"
-            id="password"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          /><br></br>
-          <input
-            placeholder="Name"
-            id="usersName"
-            type="text"
-            value={usersName}
-            onChange={handleUsersNameChange}
-          /><br></br>
-          <input id="submit" type="submit" value="Submit" />
-        </form>
-        <div>
-        <img src={require('./Kylepixel.png')} />
+          <h2 class="form-signin-heading">Sign-up</h2>
+            <input
+              placeholder="Name"
+              id="usersName"
+              type="text"
+              value={usersName}
+              onChange={handleUsersNameChange}
+             /><br></br>
+            <input
+              placeholder="Email"
+              id="email"
+              type="text"
+              value={email}
+              onChange={handleEmailChange}
+            /><br></br>
+            <input
+              placeholder="Password"
+              id="password"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            /><br></br>
+            <br></br>
+            <input id="submit" type="submit" value="Submit" />
+          </form>
+        <div class="box sb1">
+          <div class="text">
+          <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
+          <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
+          <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
         </div>
-        <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
-        <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
-        <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
+        </div>      
+        <div>
+          <img src={require('./Kylepixel.png')} />
+        </div>
+        </div>
       </body>
-    
     </>
   );
 };
