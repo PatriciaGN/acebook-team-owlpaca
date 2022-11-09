@@ -49,14 +49,13 @@ const Post = ({ post, navigate }) => {
     
       <Hates />
       <div id="message-box">
-            <NewComment  fetchComments={fetchComments}/>
+            <NewComment  fetchComments={fetchComments} post_id={post._id}/>
       </div>
       <div id='feed' role='feed'>
         {comments.map(
           (comment) => (<Comment comment={comment} key={comment._id} />)
          ).reverse()}
       </div>
- 
     </article>
   )
   } else {

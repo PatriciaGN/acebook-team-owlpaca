@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import "./NewComment"
 import "./NewComment.css";
 
-const NewComment = ({ fetchComments }) => {
+const NewComment = ({ post_id, fetchComments }) => {
   const token = window.localStorage.getItem("token");
   const [message, setMessage] = useState("");
 
@@ -15,7 +15,7 @@ const NewComment = ({ fetchComments }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ message: message }),
+      body: JSON.stringify({ message: message, post_id: post_id }),
     });
     if (response.status !== 201) {
       console.log("fail")
