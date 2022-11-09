@@ -1,4 +1,6 @@
+
 const mongoose = require('mongoose');
+
 
 const PostSchema = new mongoose.Schema({
   created: {
@@ -16,8 +18,13 @@ const PostSchema = new mongoose.Schema({
     },
     required: [true],
   },
-},
-);
+
+  author: {
+       type: mongoose.Schema.Types.ObjectId,
+       ref: 'User'
+  }
+
+});
 
 const Post = mongoose.model('Post', PostSchema);
 
