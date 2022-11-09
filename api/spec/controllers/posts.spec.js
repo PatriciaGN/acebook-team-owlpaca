@@ -161,7 +161,7 @@ describe('/posts', () => {
   });
 
   describe('PATCH when token is present', () => {
-    test('updates the number of likes', async () => {
+    test('updates the number of agrees', async () => {
       let post1 = new Post({ message: 'hola!' });
       await post1.save();
 
@@ -174,5 +174,19 @@ describe('/posts', () => {
 
       expect(post.agrees).toEqual(1);
     });
+  });
+
+  test('updates the number of disagrees', async () => {
+    let post1 = new Post({ message: 'hola!' });
+    await post1.save();
+
+    response = await request(app)
+      .patch('/posts')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ _id: post1._id, agree_or_disagree: 'disagree', token: token });
+
+    let post = await Post.findOne({ _id: post1.id });
+
+    expect(post.disagrees).toEqual(1);
   });
 });
