@@ -2,8 +2,12 @@ import React from "react";
 import Comments from "../comments/Comments";
 import Hates from "../hates/Hates";
 import "./Post.css";
+const moment = require('moment')
+
 
 const Post = ({ post }) => {
+const fullDate = new Date(post.created);
+const timestamp = moment(fullDate).format('h:mma - Do MMM');
   return (
     <article data-cy="post" key={post._id}>
       <div class="header-container">
@@ -14,7 +18,7 @@ const Post = ({ post }) => {
         />
         <div class="name-and-time-container">
           <div class="username">{post.author.usersName}</div>
-          <div class="post-time">{"{ Post time }"}</div>
+          <div class="post-time">{ timestamp }</div>
         </div>
       </div>
 
