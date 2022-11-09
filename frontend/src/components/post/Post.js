@@ -1,6 +1,6 @@
 import React from 'react';
 import Comments from '../comments/Comments';
-import Agrees from '../agrees/Agrees';
+import AgreesAndDisagrees from '../agreesanddisagrees/AgreesAndDisagrees';
 import './Post.css';
 const moment = require('moment');
 
@@ -34,11 +34,12 @@ const Post = ({ post, fetchPosts }) => {
         />
       </div>
 
-      <div class="post-image-container">
-        <div class="Likes">{post.agrees}</div>
+      <div class="agrees-and-disagrees">
+        <div class="Agrees">Agrees:{post.agrees}</div>
+        <div class="Likes">Disagrees:{post.disagrees}</div>
       </div>
 
-      <Agrees post_id={post._id} fetchPosts={fetchPosts} />
+      <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
       <Comments />
     </article>
   );

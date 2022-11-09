@@ -5,6 +5,6 @@ const PostsController = require('../controllers/posts');
 
 router.get('/', PostsController.Index);
 router.post('/', PostsController.Create);
-router.patch('/', PostsController.AddAgree);
+router.patch('/', PostsController.AddAgreeOrDisagree);
 
 module.exports = router;
