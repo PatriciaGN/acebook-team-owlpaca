@@ -14,7 +14,7 @@ const SignUpForm = ({ navigate }) => {
 
     if (email === '' || password === '' || usersName === '') return;
     if (
-      !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ||
+      !email.match(/^([\w-]\.)+@([\w-]+\.)+[\w-]{2,4}$/) ||
       !password.match(/^[a-zA-Z0-9]{4,25}$/) ||
       !usersName.match(/^[a-z ,.'-]*$/i)
     )
@@ -54,15 +54,12 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-    <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
-    </link>
-    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet">
-    </link>   
+    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet"></link>   
     <body>
-      <h1 class="grumpy-book-logo">GrumpyBook</h1>
-      <div class="column1">
+      <h1>GrumpyBook</h1>
+      <div class="container">
         <form class="form-sign-up" onSubmit={handleSubmit}>
-          <h2 class="form-signin-heading">Sign-up</h2>
+        <h2 class="form-signin-heading">Sign-up</h2>
             <input
               placeholder="Name"
               id="usersName"
@@ -88,16 +85,14 @@ const SignUpForm = ({ navigate }) => {
             <input id="submit" type="submit" value="Submit" />
           </form>
         <div class="box sb1">
-          <div class="text">
+          <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
           <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
           <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
-          <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
-        </div>
-        </div>      
+        </div>   
         <div>
-          <img src={require('./Kylepixel.png')} />
+          <img src={require('./Kylepixel.png')} alt="Kyle" />
         </div>
-        </div>
+      </div>
       </body>
     </>
   );

@@ -1,59 +1,45 @@
 body {
-    margin: auto;
-    font-family: 'TheGoodMonolith', sans-serif;
-    font-size: 18px;
-    line-height: 20px;
-    color: #bbbbbb;
-    background-color: #000084;
+    background-image: url(../../images/brick\ wallpaper.png);
+    line-height: 25px;
     text-align: center;
-    margin-top: 2em;
+    margin-top: 3em;
 }
 
-.column1 {
-    text-align: center;
-    width: 100%;
-    padding: auto;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 0px;
+.container {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-items: center;
+    gap: 10px
 }
 
-.grumpy-book-logo {
+h1 {
     font-family: 'Kemco Pixel', sans-serif;
     font-size: 40px;
     color: white;  
-    text-shadow: 2px 2px black;                               
+    text-shadow: 4px 4px black;
+    line-height: 40px;                               
 }
 
 #submit {
     box-shadow: 3px 3px black;
 }
 
-
-
 form {
     display: inline-block;
-    margin-top: 10em;
+    margin-top: 0em;
 }
 
 .form-sign-up {
     max-width: 300px;
-    padding: 19px 29px 29px;
+    max-height: 300px;
+    padding: 19px 19px 19px 19px;
     margin: 0 auto;
     background-color: darkred;
-
 }
 
-.form-sign-up .form-signin-heading, .form-signin .checkbox {
-    margin-bottom: 10px;
-
-}
 h2 {
     font-size: 18px;
-    text-align: center;
-    white-space: nowrap;
     font-family: 'TheGoodMonolith', sans-serif;
 }
 
@@ -62,15 +48,16 @@ input {
 }
 
 .box {
-    width: 300px;
-    margin: 50px auto;
+    width: 250px;
+    height: auto;
+    margin: 20px auto;
     background: white;
-    padding: 20px;
-    text-align: center;
+    padding: 10px;
     font-weight: 900;
     color: black;
     font-family: 'TheGoodMonolith', sans-serif;
     position:relative;
+    box-shadow: 10px 10px black;
   }
 
   .sb1:before {
@@ -80,14 +67,14 @@ input {
     position: absolute;
     border-left: 10px solid white;
     border-right: 10px solid transparent;
-    border-top: 10px solid white;
-    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid white;
     right: -20px;
     top: 50px;
-
+    box-shadow: 0px 10px black;
   }
 
-img {
+img:hover {
     -webkit-animation: mover 0.25s infinite  alternate;
     animation: mover 0.25s infinite  alternate;
 }
