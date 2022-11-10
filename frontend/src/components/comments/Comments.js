@@ -1,27 +1,27 @@
-
-import React from 'react';
+import React from "react";
 
 import "./Comments.css";
-const moment = require('moment')
+const moment = require("moment");
 
 const Comments = ({ comment }) => {
   const fullDate = new Date(comment.commentCreated);
-  const timestamp = moment(fullDate).fromNow()
-
+  const timestamp = moment(fullDate).fromNow();
 
   return (
     <>
       <div class="comments-container">
-       <div class="comment-header">
-         <img class="comment-profile-image" src={require('../../images/defaultProfileImage.png')} alt='kyle' />
-         <div class="comment-username">{comment.commentUserId.usersName}</div>
-         <div class="comment-time">grumbled back {timestamp}</div>
-         <div class="comment-name-and-time-container">
-                 
-         </div>
-       </div>
-       <div class="comment">{comment.message}</div>
-      </div >
+        <div class="comment-header">
+          <img
+            class="comment-profile-image"
+            src={comment.commentUserId.profilePic}
+            alt="kyle"
+          />
+          <div class="comment-username">{comment.commentUserId.usersName}</div>
+          <div class="comment-time">grumbled back {timestamp}</div>
+          <div class="comment-name-and-time-container"></div>
+        </div>
+        <div class="comment">{comment.message}</div>
+      </div>
     </>
   );
 };
