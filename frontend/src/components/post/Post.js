@@ -53,7 +53,7 @@ const timestamp = moment(fullDate).format('h:mma - Do MMM');
         <img class="post-image" src={post.imageURL} alt="" />
       </div>
 
-      <Hates />
+
       <div id="message-box">
             <NewComment  fetchComments={fetchComments} post_id={post._id}/>
       </div>
@@ -65,5 +65,5 @@ const timestamp = moment(fullDate).format('h:mma - Do MMM');
     </article>
   );
 };
-
+}
 export default Post;
