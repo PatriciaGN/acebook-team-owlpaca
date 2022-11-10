@@ -1,13 +1,37 @@
-import React from 'react';
-import Comments from '../comments/Comments';
+import React, { useEffect, useState } from 'react';
+import Comment from '../comments/Comments'
+import "./Post.css";
 import AgreesAndDisagrees from '../agreesanddisagrees/AgreesAndDisagrees';
-import './Post.css';
-const moment = require('moment');
+import NewComment from '../newComment/NewComment'
+const moment = require('moment')
 
-const Post = ({ post, fetchPosts }) => {
-  const fullDate = new Date(post.created);
-  const timestamp = moment(fullDate).startOf('year').fromNow();
+const Post = ({ post, navigate, fetchPosts }) => {
+const fullDate = new Date(post.created);
+const timestamp = moment(fullDate).format('h:mma - Do MMM');
+  const [comments, setComments] = useState([]);
+  const [token, setToken] = useState(window.localStorage.getItem("token"));
+  
+  useEffect(() => {
+    fetchComments()
+  }, [])
 
+  const fetchComments = () => {
+    if (token) {
+      fetch('/comments?' + post._id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then(async (data) => {
+          window.localStorage.setItem('token', data.token);
+          setToken(window.localStorage.getItem('token'));
+          setComments(data.comments);
+        });
+    }
+  }
+
+  if (token) {
   return (
     <article data-cy="post" key={post._id}>
       <div class="header-container">
@@ -17,8 +41,8 @@ const Post = ({ post, fetchPosts }) => {
           alt="kyle"
         />
         <div class="name-and-time-container">
-          <div class="username">{'{ Name }'}</div>
-          <div class="post-time">{timestamp}</div>
+          <div class="username">{post.author.usersName} grumbled</div>
+          <div class="post-time">{ timestamp }</div>
         </div>
       </div>
 
@@ -27,22 +51,26 @@ const Post = ({ post, fetchPosts }) => {
       </div>
 
       <div class="post-image-container">
-        <img
-          class="post-image"
-          src="https://i.postimg.cc/T5vGJyXj/kyle.png"
-          alt="kyle"
-        />
+        <img class="post-image" src={post.imageURL} alt="" />
       </div>
-
       <div class="agrees-and-disagrees">
         <div class="Agrees">Agrees:{post.agrees}</div>
         <div class="Likes">Disagrees:{post.disagrees}</div>
       </div>
 
       <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
-      <Comments />
+
+      <div id="message-box">
+            <NewComment  fetchComments={fetchComments} post_id={post._id}/>
+      </div>
+      <div id='feed' role='feed'>
+        {comments.map(
+          (comment) => (<Comment comment={comment} key={comment._id} />)
+         ).reverse()}
+      </div>
     </article>
   );
 };
+}
 
 export default Post;

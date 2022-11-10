@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
-import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
-import errorHandlerPassword from '../errorHandling/errorHandlerPassword';
+import React, { useState } from "react";
+import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
+import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
+import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
+
 
 const SignUpForm = ({ navigate }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [usersName, setUsersName] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [usersName, setUsersName] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (email === '' || password === '' || usersName === '') return;
+    if (email === "" || password === "" || usersName === "") return;
     if (
       !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ||
       !password.match(/^[a-zA-Z0-9]{4,25}$/) ||
@@ -20,11 +21,12 @@ const SignUpForm = ({ navigate }) => {
       return;
     if (!usersName.match(/^[a-z ,.'-]*$/i)) return;
 
-    fetch('/users', {
-      method: 'post',
+    fetch("/users", {
+      method: "post",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
+
       body: JSON.stringify({
         email: email,
         password: password,
@@ -32,9 +34,9 @@ const SignUpForm = ({ navigate }) => {
       }),
     }).then((response) => {
       if (response.status === 201) {
-        navigate('/login');
+        navigate("/login");
       } else {
-        navigate('/signup');
+        navigate("/signup");
       }
     });
   };
@@ -53,6 +55,7 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
+   
       <h1>Sign-up</h1>
       <form onSubmit={handleSubmit}>
         <input
