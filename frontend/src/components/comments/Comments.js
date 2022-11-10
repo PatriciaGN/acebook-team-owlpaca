@@ -13,7 +13,7 @@ const Comments = ({ comment }) => {
     <>
       <div class="comments-container">
        <div class="comment-header">
-         <img class="comment-profile-image" src={require('../../images/defaultProfileImage.png')} alt='kyle' />
+         <img class="comment-profile-image" src={comment.commentUserId.profilePic} alt='kyle' />
          <div class="comment-username">{comment.commentUserId.usersName}</div>
          <div class="comment-time">grumbled back {timestamp}</div>
          <div class="comment-name-and-time-container">
