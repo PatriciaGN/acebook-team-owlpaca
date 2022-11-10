@@ -25,6 +25,7 @@ const CreatePost = ({ navigate, fetchPosts }) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
+
       body: JSON.stringify({ message: message, imageURL: imageURL }),
     });
     if (response.status !== 201) {
@@ -44,6 +45,7 @@ const CreatePost = ({ navigate, fetchPosts }) => {
 
   const handleImage = async () => {
     if (imageUpload == null) return;
+
     return new Promise((resolve, reject) => {
       const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
       uploadBytes(imageRef, imageUpload).then((snapshot) => {
@@ -57,27 +59,29 @@ const CreatePost = ({ navigate, fetchPosts }) => {
   return (
     <>
       <form id="submit-post-form" onSubmit={handleSubmitPost}>
-        <label id="post-a-message-label">
-          Grumble away friend, we're listening:
-        </label>
+        <b>
+          <label id="post-a-message-label">
+            Grumble away friend, we're listening:
+          </label>
+        </b>
         <textarea
           placeholder="Grumble away!"
           id="message"
           value={message}
           onChange={handleMessageChange}
         />
+        <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{' '}
 
         <div id="message-button-container">
           <input
             class="message-button"
             id="submit"
             type="submit"
-            value="Grumble"
+            value="Post your grumble"
           />
-          <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{" "}
         </div>
-        <br></br>
-        <label for="file-upload" className="custom-file-upload">
+        <div id="image-buttons">
+   <label for="file-upload" className="custom-file-upload">
           Upload Grumble.jpg
         </label>
         <input
@@ -88,6 +92,8 @@ const CreatePost = ({ navigate, fetchPosts }) => {
             setImageUpload(event.target.files[0]);
           }}
         />
+        </div>
+
       </form>
     </>
   );

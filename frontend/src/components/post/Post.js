@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import Comment from '../comments/Comments'
+import Comment from '../comments/Comments';
+import './Post.css';
 
-import "./Post.css";
 import AgreesAndDisagrees from '../agreesanddisagrees/AgreesAndDisagrees';
-import NewComment from '../newComment/NewComment'
-const moment = require('moment')
+import NewComment from '../newComment/NewComment';
+const moment = require('moment');
 
 const Post = ({ post, navigate, fetchPosts }) => {
-const fullDate = new Date(post.created);
-const timestamp = moment(fullDate).fromNow()
+  const fullDate = new Date(post.created);
+  const timestamp = moment(fullDate).fromNow();
   const [comments, setComments] = useState([]);
-  const [token, setToken] = useState(window.localStorage.getItem("token"));
-  
+  const [token, setToken] = useState(window.localStorage.getItem('token'));
+
   useEffect(() => {
-    fetchComments()
-  }, [])
+    fetchComments();
+  }, []);
 
   const fetchComments = () => {
     if (token) {
@@ -30,9 +30,10 @@ const timestamp = moment(fullDate).fromNow()
           setComments(data.comments);
         });
     }
-  }
+  };
 
   if (token) {
+
   return (
     <article data-cy="post" key={post._id}>
       <div class="header-container">
@@ -47,34 +48,35 @@ const timestamp = moment(fullDate).fromNow()
           <div class="username">{post.author.usersName} grumbled</div>
           <div class="post-time">{ timestamp }</div>
         </div>
-      </div>
 
-      <div class="message-container">
-        <div class="message">{post.message}</div>
-      </div>
+        <div class="message-container">
+          <div class="message">{post.message}</div>
+        </div>
 
-      <div class="post-image-container">
-        <img class="post-image" src={post.imageURL} alt="" />
+        <div class="post-image-container">
+          <img class="post-image" src={post.imageURL} alt="" />
+        </div>
+        <div class="agrees-and-disagrees">
+          <b>
+            <div class="Agrees">👍🏽 {post.agrees}</div>
+            <div class="Disagrees">👎🏽 {post.disagrees}</div>
+          </b>
+        </div>
 
-      </div>
-      <div class="agrees-and-disagrees">
-        <div class="Agrees">Agree:{post.agrees}</div>
-        <div class="Likes">Disagree:{post.disagrees}</div>
-      </div>
 
-      <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
+        <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
 
-      <div id="message-box">
-            <NewComment  fetchComments={fetchComments} post_id={post._id}/>
-      </div>
-      <div id='feed' role='feed'>
-        {comments.map(
-          (comment) => (<Comment comment={comment} key={comment._id} />)
-         ).reverse()}
-      </div>
-    </article>
-  );
+        <div id="message-box">
+          <NewComment fetchComments={fetchComments} post_id={post._id} />
+        </div>
+        <div id="feed" role="feed">
+          {comments
+            .map((comment) => <Comment comment={comment} key={comment._id} />)
+            .reverse()}
+        </div>
+      </article>
+    );
+  }
 };
-}
 
 export default Post;
