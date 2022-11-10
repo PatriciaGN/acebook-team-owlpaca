@@ -45,31 +45,31 @@ const Post = ({ post, navigate, fetchPosts }) => {
             <div class="username">{post.author.usersName} grumbled</div>
             <div class="post-time">{timestamp}</div>
           </div>
+        </div>
 
-          <div class="message-container">
-            <div class="message">{post.message}</div>
-          </div>
+        <div class="message-container">
+          <div class="message">{post.message}</div>
+        </div>
 
-          <div class="post-image-container">
-            <img class="post-image" src={post.imageURL} alt="" />
-          </div>
-          <div class="agrees-and-disagrees">
-            <b>
-              <div class="Agrees">👍🏽 {post.agrees}</div>
-              <div class="Disagrees">👎🏽 {post.disagrees}</div>
-            </b>
-          </div>
+        <div class="post-image-container">
+          <img class="post-image" src={post.imageURL} alt="" />
+        </div>
+        <div class="agrees-and-disagrees">
+          <b>
+            <div class="Agrees">👍🏽 {post.agrees}</div>
+            <div class="Disagrees">👎🏽 {post.disagrees}</div>
+          </b>
+        </div>
 
-          <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
+        <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
 
-          <div id="message-box">
-            <NewComment fetchComments={fetchComments} post_id={post._id} />
-          </div>
-          <div id="feed" role="feed">
-            {comments
-              .map((comment) => <Comment comment={comment} key={comment._id} />)
-              .reverse()}
-          </div>
+        <div id="message-box">
+          <NewComment fetchComments={fetchComments} post_id={post._id} />
+        </div>
+        <div id="feed" role="feed">
+          {comments
+            .map((comment) => <Comment comment={comment} key={comment._id} />)
+            .reverse()}
         </div>
       </article>
     );

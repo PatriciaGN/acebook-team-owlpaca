@@ -13,7 +13,7 @@
 }
 
 h1 {
-  font-family: 'Kemco Pixel', sans-serif;
+  font-family: "Kemco Pixel", sans-serif;
   font-size: 40px;
   color: white;
   text-shadow: 4px 4px black;
@@ -50,13 +50,13 @@ h2 {
   padding: 10px;
   font-weight: 900;
   color: black;
-  font-family: 'TheGoodMonolith', sans-serif;
+  font-family: "TheGoodMonolith", sans-serif;
   position: relative;
   box-shadow: 10px 10px black;
 }
 
 .sb1:before {
-  content: '';
+  content: "";
   width: 0px;
   height: 0px;
   position: absolute;
