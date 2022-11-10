@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import "./NewComment"
 import "./NewComment.css";
 
 const NewComment = ({ post_id, fetchComments }) => {

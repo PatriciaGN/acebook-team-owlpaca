@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../comments/Comments'
-import Hates from '../hates/Hates'
 import "./Post.css";
 import NewComment from '../newComment/NewComment'
+const moment = require('moment')
 
 const Post = ({ post, navigate }) => {
+const fullDate = new Date(post.created);
+const timestamp = moment(fullDate).format('h:mma - Do MMM');
   const [comments, setComments] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   
@@ -29,25 +31,28 @@ const Post = ({ post, navigate }) => {
   }
 
   if (token) {
-
   return (
     <article data-cy="post" key={post._id}>
       <div class="header-container">
-        <img class="profile-image" src='https://iili.io/mVK9G2.png' alt='kyle' />
+        <img
+          class="profile-image"
+          src="https://iili.io/mVK9G2.png"
+          alt="kyle"
+        />
         <div class="name-and-time-container">
           <div class="username">{post.author.usersName} grumbled</div>
-          <div class="post-time">{"{ Post time }"}</div>
+          <div class="post-time">{ timestamp }</div>
         </div>
       </div>
 
       <div class="message-container">
         <div class="message">{post.message}</div>
-        </div>
-      
-      <div class="post-image-container">
-        <img class="post-image" src={post.imageURL} alt='kyle' />
       </div>
-    
+
+      <div class="post-image-container">
+        <img class="post-image" src={post.imageURL} alt="" />
+      </div>
+
       <Hates />
       <div id="message-box">
             <NewComment  fetchComments={fetchComments} post_id={post._id}/>
@@ -58,10 +63,7 @@ const Post = ({ post, navigate }) => {
          ).reverse()}
       </div>
     </article>
-  )
-  } else {
-    navigate('/login')
-  }
-}
+  );
+};
 
 export default Post;

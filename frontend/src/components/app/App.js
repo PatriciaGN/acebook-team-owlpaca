@@ -1,10 +1,10 @@
 import './App.css';
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../user/SignUpForm'
-// import Comments from '../comment/Comments'
 import React, { useState } from 'react';
 import Feed from '../feed/Feed'
 import Homepage from '../homepage/Homepage'
+import Navbar from './navbar'
 import {
   useNavigate,
   Routes,
@@ -12,7 +12,10 @@ import {
 } from "react-router-dom";
 
 const App = () => {
+ 
     return (
+      <>
+       <Navbar />
         <Routes>
           {/* <Route path='/comments' element={<Comments />}/> */}
           <Route path='/'  element={<Homepage navigate={ useNavigate() }/>}/>
@@ -20,6 +23,7 @@ const App = () => {
           <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
           <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
         </Routes>
+      </>
     );
 }
 
