@@ -28,10 +28,10 @@ const PostsController = {
       const filter = { _id: id };
       if (agreeOrDisagree === 'agree') {
         let update = { $inc: { agrees: 1 } };
-        let post = await Post.findOneAndUpdate(filter, update);
+        await Post.findOneAndUpdate(filter, update);
       } else if (agreeOrDisagree === 'disagree') {
         let update = { $inc: { disagrees: 1 } };
-        let post = await Post.findOneAndUpdate(filter, update);
+        await Post.findOneAndUpdate(filter, update);
       }
     };
 

@@ -3,7 +3,7 @@ const AgreesAndDisagrees = ({ post_id, fetchPosts }) => {
 
   const addAgree = () => {
     let agreeOrDisagree = 'agree';
-    let responseAgree = fetch('/posts', {
+    fetch('/posts', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
