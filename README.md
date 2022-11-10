@@ -1,133 +1,85 @@
-# [OwlPaca - Trello Board](https://trello.com/b/2KwANtg2/owlpacas-tonalist)
+# Acebook - Owlpaca Team
 
+## Overview
 
-# Acebook
+Acebook is a Facebook-clone developed whilst on the Makers Academy Bootcamp September 2022.
 
-In this project, you are tasked with working on an existing application. A significant part of the challenge will be to familiarise yourself with the codebase you've inherited, as you work to **improve and extend** it.
+- A (full stack) web app that allows users to login to the social media platform
+- Users can interact with other users and profiles by the feed through posts, comments and likes
+- Build using Test Driven Development and working cohesively as a team.
 
-## Videos
+## Group Collabrators 
 
-These videos complement the docs below.
+- [Ben](https://github.com/eggs-benny)
+- [Chris](https://github.com/AUTOMCAS)
+- [Miles](https://github.com/Cragg87)
+- [Patricia](https://github.com/PatriciaGN)
+- [Joe](https://github.com/JoeOsborne77)
+- [Hibaq](https://github.com/hibscodes)
 
-* [An overview of the app](https://youtu.be/meTABGgrO2c)
-* [The backend (api)](https://youtu.be/mFczOzWW3vo)
-* [Postman](https://youtu.be/VO_kinuJngA)
+## User Stories:
 
-## Existing Features
+Using TDD, we implemented the following user stories:
 
-It's already possible for a user to:
-- Sign up
-- Sign in
-- Sign out
-- View a list of posts
+As a user,  
+So I can use Acebook,  
+I'd like to be able to register an account.
 
-At the moment, it's not possible to create posts via the user interface but there are some failing tests for that feature, so it's a good place to start you work.
-## Technologies
+As a user,  
+For a personalised experience,  
+I'd like to be able to log into Acebook.
 
-Here's an overview of the technologies used to build this template application. You don't need to do a deep dive on each one right now. Instead, try to get a feeling for the big picture and then dive into the details when a specific task pushes you in that direction.
+As a user,  
+So that nobody posts on my behalf,  
+I'd like to be able to log out of Acebook.
 
-### **M** is for MongoDB
-[MongoDB](https://www.mongodb.com/) is a _NoSQL_ database program that stores data in collections of JSON-like structures, rather than in tables. The application interracts with MongoDB using a tool called Mongoose.
+As a user,  
+So that I can say what's on my mind,  
+I'd like to be able to make a post on the timeline.
 
-### **E** is for Express
-[Express](https://expressjs.com/) is the Javascript equivalent of Sinatra. The structure of this application will feel quite different to what you're used to but the principles are the same.
+As a user,  
+So I can see what other people have to say,  
+I'd like to be able to view other users' posts on the timeline.
 
-### **R** is for React
-[React](https://reactjs.org/) is a hugely popular tool that is used to build engaging front ends. The basic principle is that the front end is split up into _components_, each of which _could_ include some logic, template structure (HTML) and styling (CSS).
+As a user,  
+So I know who said what,  
+I'd like to see who posted each post.
 
-### **N** is for Node
-Java script was originally designed to run exclusively in browsers, such as Chrome. [Node](https://nodejs.org/en/) is a tool that allows you to run Javascript outside the browser and its invention made it possible to build full stack Javascript apps.
+As a user,  
+So I am keeping up with the latest news,  
+I'd like to see the time and date when others have posted.
 
-We also used...
+As a user,  
+So I see the latest news first,  
+I'd like to see the newest posts first.
 
-- [Jest](https://jestjs.io/) for unit testing on the back end
-- [Cypress](https://www.cypress.io/) for end-to-end testing and component testing, on the front end
-- [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
-- [Handlebars](https://handlebarsjs.com/) for the `home` template.
-- [ESLint](https://eslint.org) for linting.
+As a user,  
+So I can express my appreciation for a post,  
+I'd like to be able to like and dislike a post.
+
+As a user,  
+So I can engage with a post,  
+I'd like to be able to comment on posts.
+
+## Technologies:
+
+- [Express](https://expressjs.com/) web framework for Node.js.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
+- [Handlebars](https://handlebarsjs.com/) to render view templates.
+- [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
+- [ESLint](https://eslint.org) for linting.
+- [Jest](https://jestjs.io/) for testing.
+- [Cypress](https://www.cypress.io/) for end-to-end testing.
 
-## Architecture
+## Card wall (Trello Planning)
 
-This application is comprised of two distinct pieces.
+![Trello Screenshot](./public/images/Trello_screenshot.png)
 
-- An backend API built with Express
-- A front end built with React
+(https://trello.com/b/2KwANtg2/owlpacas-tonalist)
 
-The React front end sends HTTP requests to the backend API and receives JSON in response body, rather than a whole page of HTML.
+## ScreenShots (app)
 
-For example, the React front end would send this request to retrieve the entire `Post` collection.
-
-```
-GET "/posts"
-```
-
-And the body of the response would look like this.
-
-```
-{
-    "posts": [
-        {
-            "_id": "62f8ef0e6c1ffcf74cbbb181",
-            "message": "Hello, this is my first Acebook post!",
-            "__v": 0
-        },
-        {
-            "_id": "62f8ef366c1ffcf74cbbb188",
-            "message": "Welcome to Acebook! Have an Acetime :)",
-            "__v": 0
-        },
-        {
-            "_id": "62f8f08af1cffef85a7426ae",
-            "message": "Thank you :D",
-            "__v": 0
-        }
-    ]
-}
-```
-
-Here's a diagram of the above
-<br>
-<br>
-![a diagram of the mern stack](./diagrams/mern_stack.png)
-<br>
-<br>
-
-Once recieved by the React FE, the JSON in the response body is used to render a list of posts on the page.
-
-![reponse body mapped onto a page](./diagrams/response_parsing.png)
-
-This architectural pattern is quite popular because it allows teams to build multiple front ends, all of which use the same backend API. You could, for example, go on to build a mobile app without needing to create another backend API.
-## Authentication
-
-Up until now, if you've implemented authentication, it will likely have been done using sessions - this is a useful point of comparison but, if you haven't implemented authentication yet, that's not going to impede you right now.
-
-Here's the authentication flow for this application
-
-1. A registered user submits their email address and password via the React front end.
-2. The Express backend receives the data and tries to find a user in the DB with the same email address.
-3. If a user is found, the password in the database is compared to the password that was submitted.
-4. If the passwords match, a JSON Web Token is generated and returned, as part of the response.
-5. The React front end receives the token and holds on to it.
-6. Every request to `"/posts"` must include a valid token (which is checked by the backend).
-7. When the user logs out, the front end discards the token.
-
-![authentication flow diagram](./diagrams/auth_flow.png)
-
-### What is a JSON Web Token?
-
-A JSON Web Token, or JWT, is a token that comprises three parts
-
-- A header, which contains information about how the token was generated.
-- A signature, which is used to verify the token.
-- A payload, which you can use to store some **non-sensitive data** like a user id. Note that the payload is not secure and can be decoded very easily.
-
-The signature is created using a 'secret', which must be kept private (i.e. not put on GitHub) otherwise nefarious internet users could start to issue tokens for your application.
-
-Here, we've used an environment variable called `JWT_SECRET`, which you'll see used in the commands to start the application and run the tests (below). You can change the value of that environment variable to anything you like.
-## Card wall
-
-REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
+# Setup
 
 ## Quickstart
 
@@ -149,12 +101,9 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
 1. Fork this repository
 2. Rename your fork to `acebook-<team name>`
 3. Clone your fork to your local machine
-4. Install Node.js dependencies for both FE and BE (API)
+4. Install Node.js dependencies
    ```
-   ; cd api
-   ; npm install
-   ; cd ../frontend
-   ; npm install
+   npm install
    ```
 5. Install an ESLint plugin for your editor. For example: [linter-eslint](https://github.com/AtomLinter/linter-eslint) for Atom.
 6. Install MongoDB
@@ -162,7 +111,7 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
    brew tap mongodb/brew
    brew install mongodb-community@5.0
    ```
-   *Note:* If you see a message that says `If you need to have mongodb-community@5.0 first in your PATH, run:`, follow the instruction. Restart your terminal after this.
+   _Note:_ If you see a message that says `If you need to have mongodb-community@5.0 first in your PATH, run:`, follow the instruction. Restart your terminal after this.
 7. Start MongoDB
    ```
    brew services start mongodb-community@5.0
@@ -171,79 +120,39 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
 ### Start
 
 1. Start the server
-
-  **Note the use of an environment variable for the JWT secret**
-
    ```
-   ; cd api
-   ; JWT_SECRET=SUPER_SECRET npm start
+   npm start
    ```
-2. Start the front end
+2. Browse to [http://localhost:3000](http://localhost:3000)
 
-  In a new terminal session...
+#### Start test server
 
+The server must be running locally with test configuration for the
+integration tests to pass.
+
+```
+npm run start:test
+```
+
+This starts the server on port `3030` and uses the `acebook_test` MongoDB database,
+so that integration tests do not interact with the development server.
+
+### Test
+
+- Run all tests
   ```
-  ; cd frontend
-  ; npm start
+  npm test
   ```
-
-You should now be able to open your browser and go to `http://localhost:3000/signup` to create a new user.
-
-Then, after signing up, you should be able to log in by going to `http://localhost:3000/login`.
-
-After logging in, you won't see much but you can create posts using PostMan and they shoud then show up in the browser if you refresh the page.
-
-### Testing
-
-
-#### The Backend (API)
-
-**Note the use of an environment variable for the JWT secret**
-
-  Start the server in test mode (so that it connects to the test DB)
-
-  ```
-  ; cd api
-  ; JWT_SECRET=SUPER_SECRET npm run start:test
-  ```
-
-  Then run the tests in a new terminal session
-
-  ```
-  ; cd api
-  ; JWT_SECRET=SUPER_SECRET npm run test
-  ```
-
-#### The frontend (React)
-
-**Note the use of an environment variable for the JWT secret**
-
-  Start the server in test mode (so that it connects to the test DB)
-
-  ```
-  ; cd api
-  ; JWT_SECRET=SUPER_SECRET npm run start:test
-  ```
-
-  Then start the front end in a new terminal session
-
-  ```
-  ; cd frontend
-  ; JWT_SECRET=SUPER_SECRET npm start
-  ```
-
-  Then run the tests in a new terminal session
-
-  ```
-  ; cd frontend
-  ; JWT_SECRET=SUPER_SECRET npm run test
+- Run a check
+  ```bash
+  npm run lint              # linter only
+  npm run test:unit         # unit tests only
+  npm run test:integration  # integration tests only
   ```
 
 ## MongoDB Connection Errors?
 
-Some people occasionally experience MongoDB connection errors when running the tests or trying to use the application. Here are some tips which might help resolve such issues.
+Some people occasionally experience MongoDB connection errors when running the tests or trying to use the application. Here are some tips that may resolve such issues:
 
-- Check that MongoDB is installed using `mongo --version`
-- Check that it's running using `brew services list`
-
-If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
+- Check that MongoDB is installed using: `mongo --version`
+- Check that it's running using: `brew services list`
