@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
 import "./Feed.css";
-import CreatePost from "../createPost/CreatePost";
+import CreatePost from '../createPost/CreatePost';
+import NavLoggedIn from '../app/navLoggedIn'
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
@@ -34,6 +35,7 @@ const Feed = ({ navigate }) => {
 
   if (token) {
     return (
+
       <>
         <div id="post-body">
           <h2 id="posts-heading">Posts</h2>
