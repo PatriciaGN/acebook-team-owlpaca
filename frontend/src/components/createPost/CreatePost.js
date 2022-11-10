@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import errorHandlerMessage from "../errorHandling/errorHandlerMessage";
-import "./CreatePost";
-import { storage } from "../../firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import "./CreatePost.css";
-
+import React, { useState } from 'react';
+import errorHandlerMessage from '../errorHandling/errorHandlerMessage';
+import './CreatePost';
+import { storage } from '../../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from 'uuid';
+import './CreatePost.css';
 
 const CreatePost = ({ navigate, fetchPosts }) => {
   const token = window.localStorage.getItem('token');
@@ -19,8 +18,8 @@ const CreatePost = ({ navigate, fetchPosts }) => {
 
     const imageURL = await handleImage();
 
-    let response = await fetch("/posts", {
-      method: "post",
+    let response = await fetch('/posts', {
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -71,7 +70,6 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           onChange={handleMessageChange}
         />
         <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{' '}
-
         <div id="message-button-container">
           <input
             class="message-button"
@@ -81,19 +79,19 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           />
         </div>
         <div id="image-buttons">
-   <label for="file-upload" className="custom-file-upload">
-          Upload Grumble.jpg
-        </label>
-        <input
-          id="file-upload"
-          type="file"
-
-          onChange={(event) => {
-            setImageUpload(event.target.files[0]);
-          }}
-        />
+          <button class="submit">
+            <label for="file-upload" className="custom-file-upload">
+              Upload Grumble.jpg
+            </label>
+          </button>
+          <input
+            id="file-upload"
+            type="file"
+            onChange={(event) => {
+              setImageUpload(event.target.files[0]);
+            }}
+          />
         </div>
-
       </form>
     </>
   );

@@ -1,25 +1,22 @@
-
-import React, { useState } from "react";
-import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
-import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
-import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
-import { storage } from "../../firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import "./SignUpForm.css";
-
+import React, { useState } from 'react';
+import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
+import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
+import errorHandlerPassword from '../errorHandling/errorHandlerPassword';
+import { storage } from '../../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from 'uuid';
+import './SignUpForm.css';
 
 const SignUpForm = ({ navigate }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [usersName, setUsersName] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [usersName, setUsersName] = useState('');
   const [profilePicUpload, setProfilePicUpload] = useState(null);
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (email === "" || password === "" || usersName === "") return;
+    if (email === '' || password === '' || usersName === '') return;
     if (
       !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ||
       !password.match(/^[a-zA-Z0-9]{4,25}$/) ||
@@ -30,10 +27,10 @@ const SignUpForm = ({ navigate }) => {
 
     const profilePicURL = await UploadProfilePic();
 
-    await fetch("/users", {
-      method: "post",
+    await fetch('/users', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
 
       body: JSON.stringify({
@@ -44,13 +41,12 @@ const SignUpForm = ({ navigate }) => {
       }),
     }).then((response) => {
       if (response.status === 201) {
-        navigate("/login");
+        navigate('/login');
       } else {
-        navigate("/signup");
+        navigate('/signup');
       }
     });
   };
-
 
   const UploadProfilePic = async () => {
     return new Promise((resolve) => {
@@ -80,54 +76,67 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-    <div id='main-signup-container'>
-      <h1>Sign-up</h1>
-      <div class="container">
-        <form class="form-sign-up" onSubmit={handleSubmit}>
-        <h2 class="form-signin-heading">Sign-up</h2>
+      <div id="main-signup-container">
+        <h1>Sign-up</h1>
+        <div class="container">
+          <form class="form-sign-up" onSubmit={handleSubmit}>
+            <h2 class="form-signin-heading">Sign-up</h2>
             <input
               placeholder="Name"
               id="usersName"
               type="text"
               value={usersName}
               onChange={handleUsersNameChange}
-             /><br></br>
+            />
+            <br></br>
             <input
               placeholder="Email"
               id="email"
               type="text"
               value={email}
               onChange={handleEmailChange}
-            /><br></br>
+            />
+            <br></br>
             <input
               placeholder="Password"
               id="password"
               type="password"
               value={password}
               onChange={handlePasswordChange}
-            /><br></br>
+            />
             <br></br>
-            <input id="submit" type="submit" value="Submit" />
-             <label for="file-upload" className="custom-file-upload">
-            Choose your vain seflie!
-          </label>
-          <input
-            id="file-upload"
-            type="file"
-            onChange={(event) => {
-              setProfilePicUpload(event.target.files[0]);
-            }}
-          />
+            <br></br>
+            <input class="submit" id="submit" type="submit" value="Submit" />
+            <button class="submit">
+              <label for="file-upload" className="custom-file-upload">
+                Choose your vain seflie!
+              </label>
+            </button>
+            <input
+              id="file-upload"
+              type="file"
+              onChange={(event) => {
+                setProfilePicUpload(event.target.files[0]);
+              }}
+            />
           </form>
-        <div class="box sb1">
-          <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
-          <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
-          <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
-        </div>   
-        <div>
-          <img id="KyleImage" src={require('../../images/Kylepixel.png')} alt="Kyle" />
+          <div class="box sb1">
+            <div id="ErrorMessagePassword">
+              {errorHandlerUsersName(usersName)}
+            </div>
+            <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
+            <div id="ErrorMessagePassword">
+              {errorHandlerPassword(password)}
+            </div>
+          </div>
+          <div>
+            <img
+              id="KyleImage"
+              src={require('../../images/Kylepixel.png')}
+              alt="Kyle"
+            />
+          </div>
         </div>
-      </div>
       </div>
     </>
   );
