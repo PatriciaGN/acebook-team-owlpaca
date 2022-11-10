@@ -6,17 +6,17 @@ const NavLoggedIn = () => {
   return (
     <>
        <nav className="nav">
-      <a href="/" className="site-title">Acebook</a>
+      <a href="/" className="site-title">GrumbleBook</a>
       <ul>
         <li>
-          <a href="/">profile</a>
+          <a href="/">Profile</a>
         </li>
         <li>
-          <a href="/posts">posts</a>
+          <a href="/posts">Posts</a>
         </li>
 
         <li>
-          <a href="/login">logout</a>
+          <a href="/login">Logout</a>
         </li>
       </ul>
     </nav>

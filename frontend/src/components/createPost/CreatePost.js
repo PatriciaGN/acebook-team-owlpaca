@@ -55,7 +55,7 @@ const CreatePost = ({ navigate, fetchPosts }) => {
     <>
       <form id="submit-post-form" onSubmit={handleSubmitPost}>
         <label id="post-a-message-label">
-          Spew some shit that no one cares about:
+          Grumble away friend, we're listening:
         </label>
         <textarea
           placeholder="Message"
@@ -64,7 +64,7 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           onChange={handleMessageChange}
         />
         <div id="message-button-container">
-          <input class="message-button" id="submit" type="submit" value=":@" />
+          <input class="message-button" id="submit" type="submit" value="Post Grumble" />
           <div id="ErrorMessageMessage">
             {errorHandlerMessage(message)}
           </div>{' '}

@@ -38,9 +38,6 @@ const Feed = ({ navigate }) => {
       <>
         <div id="post-body">
           <h2 id="posts-heading">Posts</h2>
-          <button id="logout-button" onClick={logout}>
-            Just leave.
-          </button>
           <div id="message-box">
             <CreatePost fetchPosts={fetchPosts} navigate={navigate} />
           </div>

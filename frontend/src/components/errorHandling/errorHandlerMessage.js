@@ -4,7 +4,7 @@ const errorHandlerMessage = (message) => {
   if (message === '') {
     return (
       <div id="message-error-empty">
-        Would you like to share your grumbly thoughts?
+        You need to type something if you want to express your grumble.
       </div>
     );
   } else if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) {

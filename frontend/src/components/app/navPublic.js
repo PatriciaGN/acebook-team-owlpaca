@@ -1,48 +1,19 @@
 import "./navbar.css"
 
-/* <div>
-
-  <NavPublic>
-    <nav className="nav">
-        <a href="/" className="site-title">Acebook</a>
-        <ul>
-            
-          <li>
-            <a href="/signup">signup</a>
-          </li>
-
-          <li>
-            <a href="/login">login</a>
-          </li>
-
-          <li>
-            <a href="/">profile</a>
-          </li>
-
-          <li>
-            <a href="/posts">posts</a>
-          </li>
-
-          
-      </ul>
-    </nav>
-  </ NavPublic>
-</ div> */
-
 const NavPublic = () => {
  
   return (
     <>
        <nav className="nav">
-        <a href="/" className="site-title">Acebook</a>
+        <a href="/" className="site-title">GrumbleBook</a>
         <ul>
             
           <li>
-            <a href="/signup">signup</a>
+            <a href="/signup">Signup</a>
           </li>
 
           <li>
-            <a href="/login">login</a>
+            <a href="/login">Login</a>
           </li>      
       </ul>
     </nav>
