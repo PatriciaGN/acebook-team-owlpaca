@@ -21,23 +21,23 @@ export default function Navbar() {
  
   return (
     <nav className="nav">
-      <a href="/" className="site-title">Acebook</a>
+      <a href="/" className="site-title">GrumbleBook</a>
       <ul>
         
         <li>
-            <a href="/signup">signup</a>
+            <a href="/signup">Signup</a>
         </li>
           <li>
-            <a href="/login">login</a>
+            <a href="/login">Login</a>
           </li>
           <li>
-          <a href="/">profile</a>
+          <a href="/">Profile</a>
         </li>
         <li>
-            <a href="/posts">posts</a>
+            <a href="/posts">GrumbleFeed</a>
         </li>
         <li>
-          <a href="/login">logout</a>
+          <a href="/login">Logout</a>
         </li>
         
       </ul>

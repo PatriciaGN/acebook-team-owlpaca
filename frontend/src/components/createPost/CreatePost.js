@@ -54,9 +54,9 @@ const CreatePost = ({ navigate, fetchPosts }) => {
   return (
     <>
       <form id="submit-post-form" onSubmit={handleSubmitPost}>
-        <b><label id="post-a-message-label">
-          Spew some shit that no one cares about:
-        </label></b>
+        <label id="post-a-message-label">
+          Grumble away friend, we're listening:
+        </label>
         <textarea
           placeholder="Grumble away!"
           id="message"

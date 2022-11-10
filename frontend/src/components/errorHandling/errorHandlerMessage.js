@@ -3,9 +3,9 @@ import React from 'react';
 const errorHandlerMessage = (message) => {
   if (message === '') {
     return (
-      <b><div id="message-error-empty">
-        Would you like to share your grumbly thoughts?
-      </div></b>
+      <div id="message-error-empty">
+        You need to type something if you want to grumble.
+      </div>
     );
   } else if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) {
     return (

@@ -7,7 +7,7 @@ const moment = require('moment')
 
 const Post = ({ post, navigate, fetchPosts }) => {
 const fullDate = new Date(post.created);
-const timestamp = moment(fullDate).format('h:mma - Do MMM');
+const timestamp = moment(fullDate).fromNow()
   const [comments, setComments] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   
@@ -54,8 +54,8 @@ const timestamp = moment(fullDate).format('h:mma - Do MMM');
         <img class="post-image" src={post.imageURL} alt="" />
       </div>
       <div class="agrees-and-disagrees">
-        <div class="Agrees">Agrees:{post.agrees}</div>
-        <div class="Likes">Disagrees:{post.disagrees}</div>
+        <div class="Agrees">Agree:{post.agrees}</div>
+        <div class="Likes">Disagree:{post.disagrees}</div>
       </div>
 
       <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
