@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../comments/Comments';
 import './Post.css';
+
 import AgreesAndDisagrees from '../agreesanddisagrees/AgreesAndDisagrees';
 import NewComment from '../newComment/NewComment';
 const moment = require('moment');
@@ -32,18 +33,20 @@ const Post = ({ post, navigate, fetchPosts }) => {
   };
 
   if (token) {
-    return (
-      <article data-cy="post" key={post._id}>
-        <div class="header-container">
-          <img
-            class="profile-image"
-            src="https://iili.io/mVK9G2.png"
-            alt="kyle"
-          />
-          <div class="name-and-time-container">
-            <div class="username">{post.author.usersName} grumbled</div>
-            <div class="post-time">{timestamp}</div>
-          </div>
+
+  return (
+    <article data-cy="post" key={post._id}>
+      <div class="header-container">
+        <img
+          class="profile-image"
+
+          src={post.author.profilePic}
+          alt="https://avatarfiles.alphacoders.com/654/thumb-1920-65419.jpg"
+
+        />
+        <div class="name-and-time-container">
+          <div class="username">{post.author.usersName} grumbled</div>
+          <div class="post-time">{ timestamp }</div>
         </div>
 
         <div class="message-container">
@@ -59,6 +62,7 @@ const Post = ({ post, navigate, fetchPosts }) => {
             <div class="Disagrees">👎🏽 {post.disagrees}</div>
           </b>
         </div>
+
 
         <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
 

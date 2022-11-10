@@ -11,6 +11,11 @@ img {
   width: 50%;
 }
 
+
+input[type="file"] {
+  display: none;
+}
+
 #post-a-message-label {
   font-size: 15px;
 }
@@ -46,3 +51,4 @@ img {
   box-shadow: 0 5px rgb(92, 73, 39);
   transform: translateY(4px);
 }
+

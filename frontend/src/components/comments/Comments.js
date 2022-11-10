@@ -1,10 +1,13 @@
+
 import React from 'react';
+
 import "./Comments.css";
 const moment = require('moment')
 
 const Comments = ({ comment }) => {
   const fullDate = new Date(comment.commentCreated);
   const timestamp = moment(fullDate).fromNow()
+
 
   return (
     <>
@@ -20,8 +23,6 @@ const Comments = ({ comment }) => {
        <div class="comment">{comment.message}</div>
       </div >
     </>
-  )
-}
+  );
+};
 export default Comments;
-
-
