@@ -14,7 +14,7 @@ const Post = ({ post, navigate }) => {
 
   const fetchComments = () => {
     if (token) {
-      fetch('/comments', {
+      fetch('/comments?' + post._id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,6 +29,7 @@ const Post = ({ post, navigate }) => {
   }
 
   if (token) {
+
   return (
     <article data-cy="post" key={post._id}>
       <div class="header-container">
@@ -49,7 +50,7 @@ const Post = ({ post, navigate }) => {
     
       <Hates />
       <div id="message-box">
-            <NewComment  fetchComments={fetchComments} post_id={post._id}/>
+            <NewComment  fetchComments={fetchComments} postd={post._id}/>
       </div>
       <div id='feed' role='feed'>
         {comments.map(

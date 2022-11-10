@@ -1,20 +1,24 @@
 const Comment = require('../models/comment');
 const TokenGenerator = require('../models/token_generator');
+// const ObjectId = require('mongodb').objectId
+// const uId = ObjectId("636cd676db78901f4576afed")
 
 const CommentsController = {
   Index: (req, res) => {
-    Comment.find(req.body.post_id).populate('commentUserId').find().populate('commentPostId').find(async (err, comments) => {
-      // db.comments.find({commentPostId: ObjectId("636bd83d1b429adadc2e6a8a")})
-      // User.findOne({_id:ObjectId("5abf2eaa1068113f1e")})
+    // const newComment = Comment.find('Feedback again')
+    const queryPostId = (Object.keys(req.query))[0]
+    Comment.find({"commentPostId": queryPostId}).populate('commentPostId').find().populate('commentUserId').find(async (err, comments) => {
+      // console.log(comments)
       if (err) {
         throw err;
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id)
-      res.status(200).json({ comments: comments, token: token, commentUserId: req.user_id, commentPostId: req.body.post_id });
+      res.status(200).json({ comments: comments, token: token, commentUserId: req.user_id, commentPostId: req.body.postId });
     });
   },
 
   Create: (req, res) => {
+    console.log(req.body)
     const newComment = {
       message: req.body.message,
       commentUserId: req.user_id,
