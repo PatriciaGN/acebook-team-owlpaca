@@ -17,14 +17,18 @@ img {
 
 #message-error-empty {
   margin-top: 0px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 #message-error-invalid {
   margin-top: 0px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 #message {
-  margin-bottom: 0px
+  margin-bottom: 0px;
 }
 
 #image-buttons {
@@ -41,5 +45,4 @@ img {
   background-color: #ebb462;
   box-shadow: 0 5px rgb(92, 73, 39);
   transform: translateY(4px);
-
 }

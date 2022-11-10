@@ -19,7 +19,7 @@ article {
   width: 30px;
   height: 30px;
   border-radius: 30px;
-  object-fit: cover
+  object-fit: cover;
 }
 
 .name-and-time-container {
@@ -39,7 +39,6 @@ article {
   margin: auto;
   width: 100%;
   margin-bottom: 6px;
-
 }
 
 .post-image {
@@ -54,9 +53,20 @@ article {
   border-radius: 8px;
   margin-bottom: 18px;
   margin-top: 4px;
+  margin-top: 0px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .message {
   color: rgb(250, 225, 225);
+}
 
+.agrees-and-disagrees {
+  margin-top: 0px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#agree-and-disagree-icons {
 }

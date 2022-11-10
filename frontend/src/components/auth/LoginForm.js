@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
 import errorHandlerPassword from '../errorHandling/errorHandlerPassword';
 import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
-import './LoginForm.css'
-
+import './LoginForm.css';
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState('');
@@ -27,12 +26,11 @@ const LogInForm = ({ navigate }) => {
       body: JSON.stringify({ email: email, password: password }),
     });
 
-
-    if(response.status !== 201) {
-      navigate('/login')
+    if (response.status !== 201) {
+      navigate('/login');
     } else {
-      let data = await response.json()
-      window.localStorage.setItem("token", data.token)
+      let data = await response.json();
+      window.localStorage.setItem('token', data.token);
 
       navigate('/posts');
     }
@@ -48,38 +46,50 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <>
-    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet"></link>
+      <link
+        href="https://fonts.cdnfonts.com/css/kemco-pixel"
+        rel="stylesheet"
+      ></link>
       <h1>Log-in</h1>
       <div class="container">
-      <form class="form-log-in" onSubmit={handleSubmit}>
-      <h2 class="form-signin-heading">Log-in</h2>
-        <div>
-        <input
-          placeholder="Email"
-          id="email"
-          type="text"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        </div>
-        <div>
-        <input
-          placeholder="Password"
-          id="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        </div>
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
-      </form>
-      <div class="box sb2">
-      <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
+        <form class="form-log-in" onSubmit={handleSubmit}>
+          <h2 class="form-signin-heading">Log-in</h2>
+          <div>
+            <input
+              placeholder="Email"
+              id="email"
+              type="text"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div>
+            <input
+              placeholder="Password"
+              id="password"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <input
+            role="submit-button"
+            id="submit"
+            type="submit"
+            value="Submit"
+          />
+        </form>
+        <div class="box sb2">
+          <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
 
-      <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
-      </div>
-      <div>
-          <img id="KyleImage" src={require('../../images/Kylepixel.png')} alt="Kyle" />
+          <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
+        </div>
+        <div>
+          <img
+            id="KyleImage"
+            src={require('../../images/Kylepixel.png')}
+            alt="Kyle"
+          />
         </div>
       </div>
     </>
