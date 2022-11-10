@@ -29,13 +29,12 @@ const Feed = ({ navigate }) => {
   };
 
   const logout = () => {
-    window.localStorage.removeItem("token");
-    navigate("/login");
+    window.localStorage.removeItem('token');
+    navigate('/login');
   };
 
   if (token) {
     return (
-
       <>
         <div id="post-body">
           <h2 id="posts-heading">Posts</h2>
@@ -46,7 +45,7 @@ const Feed = ({ navigate }) => {
             <CreatePost fetchPosts={fetchPosts} navigate={navigate} />
           </div>
           <div id="feed" role="feed">
-            {posts.map((post) => <Post post={post} key={post._id} />).reverse()}
+            {posts.map((post) => <Post post={post} key={post._id} fetchPosts={fetchPosts} />).reverse()}
           </div>
         </div>
       </>

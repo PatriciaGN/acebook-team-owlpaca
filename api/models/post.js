@@ -6,7 +6,18 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+
+  agrees: {
+    type: Number,
+    default: 0,
+  },
+  disagrees: {
+    type: Number,
+    default: 0,
+  },
+
   imageURL: String,
+
   message: {
     type: String,
     validate: {

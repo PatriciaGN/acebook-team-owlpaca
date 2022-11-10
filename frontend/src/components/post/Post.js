@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../comments/Comments'
 import "./Post.css";
+import AgreesAndDisagrees from '../agreesanddisagrees/AgreesAndDisagrees';
 import NewComment from '../newComment/NewComment'
 const moment = require('moment')
 
-const Post = ({ post, navigate }) => {
+const Post = ({ post, navigate, fetchPosts }) => {
 const fullDate = new Date(post.created);
 const timestamp = moment(fullDate).format('h:mma - Do MMM');
   const [comments, setComments] = useState([]);
@@ -52,7 +53,12 @@ const timestamp = moment(fullDate).format('h:mma - Do MMM');
       <div class="post-image-container">
         <img class="post-image" src={post.imageURL} alt="" />
       </div>
+      <div class="agrees-and-disagrees">
+        <div class="Agrees">Agrees:{post.agrees}</div>
+        <div class="Likes">Disagrees:{post.disagrees}</div>
+      </div>
 
+      <AgreesAndDisagrees post_id={post._id} fetchPosts={fetchPosts} />
 
       <div id="message-box">
             <NewComment  fetchComments={fetchComments} post_id={post._id}/>
@@ -66,4 +72,5 @@ const timestamp = moment(fullDate).format('h:mma - Do MMM');
   );
 };
 }
+
 export default Post;
