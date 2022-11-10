@@ -6,14 +6,15 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import "./CreatePost.css";
 
+
 const CreatePost = ({ navigate, fetchPosts }) => {
-  const token = window.localStorage.getItem("token");
-  const [message, setMessage] = useState("");
+  const token = window.localStorage.getItem('token');
+  const [message, setMessage] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
 
   const handleSubmitPost = async (event) => {
     event.preventDefault();
-    if (imageUpload === "" && message === "") return;
+    if (imageUpload === '' && message === '') return;
     if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) return;
 
     const imageURL = await handleImage();
@@ -21,17 +22,17 @@ const CreatePost = ({ navigate, fetchPosts }) => {
     let response = await fetch("/posts", {
       method: "post",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ message: message, imageURL: imageURL }),
     });
     if (response.status !== 201) {
-      navigate("/posts");
+      navigate('/posts');
     } else {
       let data = await response.json();
-      window.localStorage.setItem("token", data.token);
-      setMessage("");
+      window.localStorage.setItem('token', data.token);
+      setMessage('');
       fetchPosts();
     }
     setImageUpload(null);
@@ -57,14 +58,15 @@ const CreatePost = ({ navigate, fetchPosts }) => {
     <>
       <form id="submit-post-form" onSubmit={handleSubmitPost}>
         <label id="post-a-message-label">
-          Spew some shit that no one cares about:
+          Grumble away friend, we're listening:
         </label>
         <textarea
-          placeholder="Message"
+          placeholder="Grumble away!"
           id="message"
           value={message}
           onChange={handleMessageChange}
         />
+
         <div id="message-button-container">
           <input
             class="message-button"
@@ -81,6 +83,7 @@ const CreatePost = ({ navigate, fetchPosts }) => {
         <input
           id="file-upload"
           type="file"
+
           onChange={(event) => {
             setImageUpload(event.target.files[0]);
           }}

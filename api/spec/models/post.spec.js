@@ -40,12 +40,6 @@ describe('Post model', () => {
     });
   });
 
-  it('post has a timestamp', () => {
-    const currentDate = new Date('2022-05-14T11:01:58.135Z');
-    var post = new Post({ timestamp: currentDate });
-    expect(post.timestamp).toEqual(currentDate);
-  });
-
   // it('post can include an image', () => {
   //   const img = jest.mock('../../../assets/images/apples.png');
   //   var post = new Post({ image: img });

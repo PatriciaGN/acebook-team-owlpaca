@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
 import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
@@ -5,13 +6,15 @@ import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
 import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-import "./signUp.css";
+import "./SignUpForm.css";
+
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [usersName, setUsersName] = useState("");
   const [profilePicUpload, setProfilePicUpload] = useState(null);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +51,7 @@ const SignUpForm = ({ navigate }) => {
     });
   };
 
+
   const UploadProfilePic = async () => {
     return new Promise((resolve) => {
       const imageRef = ref(
@@ -76,41 +80,36 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-      <center>
-        <h1>Sign-up</h1>
-        <br />
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Email"
-            id="email"
-            type="text"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <br />
-          <br />
-          <input
-            placeholder="Password"
-            id="password"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />{" "}
-          <br />
-          <br />
-          <input
-            placeholder="Name"
-            id="usersName"
-            type="text"
-            value={usersName}
-            onChange={handleUsersNameChange}
-          />
-          <br />
-          <br />
-          <input id="submit" type="submit" value="Submit" /> <br />
-          <br />
-          <label for="file-upload" className="custom-file-upload">
-            Choose your vein seflie!
+    <div id='main-signup-container'>
+      <h1>Sign-up</h1>
+      <div class="container">
+        <form class="form-sign-up" onSubmit={handleSubmit}>
+        <h2 class="form-signin-heading">Sign-up</h2>
+            <input
+              placeholder="Name"
+              id="usersName"
+              type="text"
+              value={usersName}
+              onChange={handleUsersNameChange}
+             /><br></br>
+            <input
+              placeholder="Email"
+              id="email"
+              type="text"
+              value={email}
+              onChange={handleEmailChange}
+            /><br></br>
+            <input
+              placeholder="Password"
+              id="password"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            /><br></br>
+            <br></br>
+            <input id="submit" type="submit" value="Submit" />
+             <label for="file-upload" className="custom-file-upload">
+            Choose your vain seflie!
           </label>
           <input
             id="file-upload"
@@ -119,12 +118,17 @@ const SignUpForm = ({ navigate }) => {
               setProfilePicUpload(event.target.files[0]);
             }}
           />
-        </form>
-        <br></br>
-        <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
-        <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
-        <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
-      </center>
+          </form>
+        <div class="box sb1">
+          <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
+          <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
+          <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
+        </div>   
+        <div>
+          <img id="KyleImage" src={require('../../images/Kylepixel.png')} alt="Kyle" />
+        </div>
+      </div>
+      </div>
     </>
   );
 };

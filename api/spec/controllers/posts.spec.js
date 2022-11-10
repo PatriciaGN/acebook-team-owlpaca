@@ -5,6 +5,7 @@ const Post = require('../../models/post');
 const User = require('../../models/user');
 const TokenGenerator = require('../../models/token_generator');
 const JWT = require('jsonwebtoken');
+const { post } = require('superagent');
 let token;
 
 describe('/posts', () => {
@@ -157,5 +158,35 @@ describe('/posts', () => {
       let response = await request(app).get('/posts');
       expect(response.body.token).toEqual(undefined);
     });
+  });
+
+  describe('PATCH when token is present', () => {
+    test('updates the number of agrees', async () => {
+      let post1 = new Post({ message: 'hola!' });
+      await post1.save();
+
+      response = await request(app)
+        .patch('/posts')
+        .set('Authorization', `Bearer ${token}`)
+        .send({ _id: post1._id, agree_or_disagree: 'agree', token: token });
+
+      let post = await Post.findOne({ _id: post1.id });
+
+      expect(post.agrees).toEqual(1);
+    });
+  });
+
+  test('updates the number of disagrees', async () => {
+    let post1 = new Post({ message: 'hola!' });
+    await post1.save();
+
+    response = await request(app)
+      .patch('/posts')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ _id: post1._id, agree_or_disagree: 'disagree', token: token });
+
+    let post = await Post.findOne({ _id: post1.id });
+
+    expect(post.disagrees).toEqual(1);
   });
 });

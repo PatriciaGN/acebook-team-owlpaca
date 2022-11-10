@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
-import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
-import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
+import React, { useState } from 'react';
+import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
+import errorHandlerPassword from '../errorHandling/errorHandlerPassword';
+import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
+import './LoginForm.css'
+
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -45,8 +47,12 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <>
+    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet"></link>
       <h1>Log-in</h1>
-      <form onSubmit={handleSubmit}>
+      <div class="container">
+      <form class="form-log-in" onSubmit={handleSubmit}>
+      <h2 class="form-signin-heading">Log-in</h2>
+        <div>
         <input
           placeholder="Email"
           id="email"
@@ -54,6 +60,8 @@ const LogInForm = ({ navigate }) => {
           value={email}
           onChange={handleEmailChange}
         />
+        </div>
+        <div>
         <input
           placeholder="Password"
           id="password"
@@ -61,11 +69,18 @@ const LogInForm = ({ navigate }) => {
           value={password}
           onChange={handlePasswordChange}
         />
+        </div>
         <input role="submit-button" id="submit" type="submit" value="Submit" />
       </form>
+      <div class="box sb2">
       <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
 
       <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
+      </div>
+      <div>
+          <img id="KyleImage" src={require('../../images/Kylepixel.png')} alt="Kyle" />
+        </div>
+      </div>
     </>
   );
 };
