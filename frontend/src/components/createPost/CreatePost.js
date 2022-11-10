@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import errorHandlerMessage from '../errorHandling/errorHandlerMessage';
-import './CreatePost';
-import { storage } from './firebase';
-import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
-import { v4 } from 'uuid';
-import './CreatePost.css';
+import React, { useState } from "react";
+import errorHandlerMessage from "../errorHandling/errorHandlerMessage";
+import "./CreatePost";
+import { storage } from "../../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import "./CreatePost.css";
+
 
 const CreatePost = ({ navigate, fetchPosts }) => {
   const token = window.localStorage.getItem('token');
   const [message, setMessage] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
-  const [image, setImage] = useState("");
-  
+
   const handleSubmitPost = async (event) => {
     event.preventDefault();
     if (imageUpload === '' && message === '') return;
     if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) return;
-    
+
+    const imageURL = await handleImage();
+
     let response = await fetch("/posts", {
       method: "post",
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ message: message, imageURL: image}),
+      body: JSON.stringify({ message: message, imageURL: imageURL }),
     });
     if (response.status !== 201) {
       navigate('/posts');
@@ -33,23 +35,24 @@ const CreatePost = ({ navigate, fetchPosts }) => {
       setMessage('');
       fetchPosts();
     }
+    setImageUpload(null);
   };
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
 
-  const UploadImage = (event) => {
-    event.preventDefault();
+  const handleImage = async () => {
     if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        setImage(url)
+    return new Promise((resolve, reject) => {
+      const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+      uploadBytes(imageRef, imageUpload).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          resolve(url);
+        });
       });
     });
   };
-
 
   return (
     <>
@@ -63,26 +66,28 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           value={message}
           onChange={handleMessageChange}
         />
-        <div id="ErrorMessageMessage">
-            {errorHandlerMessage(message)}
-          </div>{" "}
+
         <div id="message-button-container">
-          <input class="message-button" id="submit" type="submit" value="Post your grumble" />
+          <input
+            class="message-button"
+            id="submit"
+            type="submit"
+            value="Grumble"
+          />
+          <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{" "}
         </div>
-        <div id="image-buttons">
-        <button id="submit" class="upload-photo" onClick={UploadImage}>Upload Photo</button> <br></br>
+        <br></br>
+        <label for="file-upload" className="custom-file-upload">
+          Upload Grumble.jpg
+        </label>
         <input
-          type="file" className="upload-photo"
+          id="file-upload"
+          type="file"
+
           onChange={(event) => {
             setImageUpload(event.target.files[0]);
           }}
         />
-        </div>
-        {imageList
-          .map((url) => {
-            return <img src={url} class="center" />;
-          })
-          .reverse()}{" "}
       </form>
     </>
   );

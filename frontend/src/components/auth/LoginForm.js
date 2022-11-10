@@ -6,35 +6,34 @@ import './LoginForm.css'
 
 
 const LogInForm = ({ navigate }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (email === '' || password === '') return;
+    if (email === "" || password === "") return;
     if (
       !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ||
       !password.match(/^[a-zA-Z0-9]{4,25}$/)
     )
       return;
 
-    let response = await fetch('/tokens', {
-      method: 'post',
+    let response = await fetch("/tokens", {
+      method: "post",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ email: email, password: password }),
     });
 
-
-    if(response.status !== 201) {
-      navigate('/login')
+    if (response.status !== 201) {
+      navigate("/login");
     } else {
-      let data = await response.json()
-      window.localStorage.setItem("token", data.token)
+      let data = await response.json();
+      window.localStorage.setItem("token", data.token);
 
-      navigate('/posts');
+      navigate("/posts");
     }
   };
 

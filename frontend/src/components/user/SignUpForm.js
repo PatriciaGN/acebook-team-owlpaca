@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
-import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
-import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
-import errorHandlerPassword from '../errorHandling/errorHandlerPassword';
+
+import React, { useState } from "react";
+import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
+import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
+import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
+import { storage } from "../../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import "./SignUpForm.css";
+
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [usersName, setUsersName] = useState("");
+  const [profilePicUpload, setProfilePicUpload] = useState(null);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,7 +28,9 @@ const SignUpForm = ({ navigate }) => {
       return;
     if (!usersName.match(/^[a-z ,.'-]*$/i)) return;
 
-    fetch("/users", {
+    const profilePicURL = await UploadProfilePic();
+
+    await fetch("/users", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +40,7 @@ const SignUpForm = ({ navigate }) => {
         email: email,
         password: password,
         usersName: usersName,
+        profilePic: profilePicURL,
       }),
     }).then((response) => {
       if (response.status === 201) {
@@ -38,6 +48,21 @@ const SignUpForm = ({ navigate }) => {
       } else {
         navigate("/signup");
       }
+    });
+  };
+
+
+  const UploadProfilePic = async () => {
+    return new Promise((resolve) => {
+      const imageRef = ref(
+        storage,
+        `profilePics/${profilePicUpload.name + v4()}`
+      );
+      uploadBytes(imageRef, profilePicUpload).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          resolve(url);
+        });
+      });
     });
   };
 
@@ -83,6 +108,16 @@ const SignUpForm = ({ navigate }) => {
             /><br></br>
             <br></br>
             <input id="submit" type="submit" value="Submit" />
+             <label for="file-upload" className="custom-file-upload">
+            Choose your vain seflie!
+          </label>
+          <input
+            id="file-upload"
+            type="file"
+            onChange={(event) => {
+              setProfilePicUpload(event.target.files[0]);
+            }}
+          />
           </form>
         <div class="box sb1">
           <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>

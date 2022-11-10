@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Comment from '../comments/Comments'
+
 import "./Post.css";
 import AgreesAndDisagrees from '../agreesanddisagrees/AgreesAndDisagrees';
 import NewComment from '../newComment/NewComment'
@@ -37,8 +38,10 @@ const timestamp = moment(fullDate).fromNow()
       <div class="header-container">
         <img
           class="profile-image"
-          src="https://iili.io/mVK9G2.png"
-          alt="kyle"
+
+          src={post.author.profilePic}
+          alt="https://avatarfiles.alphacoders.com/654/thumb-1920-65419.jpg"
+
         />
         <div class="name-and-time-container">
           <div class="username">{post.author.usersName} grumbled</div>
@@ -52,6 +55,7 @@ const timestamp = moment(fullDate).fromNow()
 
       <div class="post-image-container">
         <img class="post-image" src={post.imageURL} alt="" />
+
       </div>
       <div class="agrees-and-disagrees">
         <div class="Agrees">Agree:{post.agrees}</div>
