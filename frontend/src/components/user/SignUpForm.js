@@ -14,7 +14,7 @@ const SignUpForm = ({ navigate }) => {
 
     if (email === '' || password === '' || usersName === '') return;
     if (
-      !email.match(/^([\w-]\.)+@([\w-]+\.)+[\w-]{2,4}$/) ||
+      !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ||
       !password.match(/^[a-zA-Z0-9]{4,25}$/) ||
       !usersName.match(/^[a-z ,.'-]*$/i)
     )

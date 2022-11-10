@@ -35,10 +35,8 @@ const Feed = ({ navigate }) => {
     return (
      <>
         <div id="post-body">
-          <h2 id="posts-heading">Posts</h2>
-          <button id='logout-button' onClick={logout}>
-            Just leave.
-          </button>
+          <h2 id="posts-heading">Grumble Feed</h2>
+
           <div id="message-box">
             <CreatePost  fetchPosts={fetchPosts} navigate={navigate}/>
           </div>
