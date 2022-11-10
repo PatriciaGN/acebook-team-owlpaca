@@ -54,28 +54,35 @@ const CreatePost = ({ navigate, fetchPosts }) => {
   return (
     <>
       <form id="submit-post-form" onSubmit={handleSubmitPost}>
-        <label id="post-a-message-label">
+        <b><label id="post-a-message-label">
           Spew some shit that no one cares about:
-        </label>
+        </label></b>
         <textarea
-          placeholder="Message"
+          placeholder="Grumble away!"
           id="message"
           value={message}
           onChange={handleMessageChange}
         />
-        <div id="message-button-container">
-          <input class="message-button" id="submit" type="submit" value=":@" />
-          <div id="ErrorMessageMessage">
+        <div id="ErrorMessageMessage">
             {errorHandlerMessage(message)}
-          </div>{' '}
+          </div>{" "}
+        <div id="message-button-container">
+          <input class="message-button" id="submit" type="submit" value="Post your grumble" />
         </div>
+        <div id="image-buttons">
+        <button id="submit" class="upload-photo" onClick={UploadImage}>Upload Photo</button> <br></br>
         <input
-          type="file"
+          type="file" className="upload-photo"
           onChange={(event) => {
             setImageUpload(event.target.files[0]);
           }}
         />
-        <button onClick={(event) => {UploadImage(event)}}>Upload Photo</button> <br></br>
+        </div>
+        {imageList
+          .map((url) => {
+            return <img src={url} class="center" />;
+          })
+          .reverse()}{" "}
       </form>
     </>
   );

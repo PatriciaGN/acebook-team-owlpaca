@@ -5,13 +5,15 @@
   background-color: rgb(173, 44, 49);
   /* background-image: url("https://img.freepik.com/free-vector/angry-emoji-framed-background_53876-89765.jpg?w=360"); */
   width: 400px;
+  border-radius: 8px;
   margin: auto;
 }
 
 #posts-heading {
   text-align: center;
   margin: auto;
-  padding: 30px
+  padding: 30px;
+  font-size: 40px;
 }
 
 #post-a-message-label {
