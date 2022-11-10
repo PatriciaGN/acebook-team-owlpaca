@@ -8,7 +8,7 @@ Acebook is a Facebook-clone developed whilst on the Makers Academy Bootcamp Sept
 - Users can interact with other users and profiles by the feed through posts, comments and likes
 - Build using Test Driven Development and working cohesively as a team.
 
-## Group Collabrators 
+## Group Collabrators
 
 - [Ben](https://github.com/eggs-benny)
 - [Chris](https://github.com/AUTOMCAS)
@@ -156,3 +156,12 @@ Some people occasionally experience MongoDB connection errors when running the t
 
 - Check that MongoDB is installed using: `mongo --version`
 - Check that it's running using: `brew services list`
+
+## Docker
+
+### API
+
+To build the api image
+Within the api directory, run: `docker build . -t grumblebookapi:v1`
+
+To run the api container: `docker run -p 8080:8080 -e JWT_SECRET=SUPER_SECRET grumblebookapi:v1`
