@@ -10,20 +10,20 @@ const CreatePost = ({ navigate, fetchPosts }) => {
   const token = window.localStorage.getItem('token');
   const [message, setMessage] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
-  const [image, setImage] = useState("");
-  
+  const [image, setImage] = useState('');
+
   const handleSubmitPost = async (event) => {
     event.preventDefault();
     if (imageUpload === '' && message === '') return;
     if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) return;
-    
-    let response = await fetch("/posts", {
-      method: "post",
+
+    let response = await fetch('/posts', {
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ message: message, imageURL: image}),
+      body: JSON.stringify({ message: message, imageURL: image }),
     });
     if (response.status !== 201) {
       navigate('/posts');
@@ -45,11 +45,10 @@ const CreatePost = ({ navigate, fetchPosts }) => {
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        setImage(url)
+        setImage(url);
       });
     });
   };
-
 
   return (
     <>
@@ -63,26 +62,28 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           value={message}
           onChange={handleMessageChange}
         />
-        <div id="ErrorMessageMessage">
-            {errorHandlerMessage(message)}
-          </div>{" "}
+        <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{' '}
         <div id="message-button-container">
-          <input class="message-button" id="submit" type="submit" value="Post your grumble" />
+          <input
+            class="message-button"
+            id="submit"
+            type="submit"
+            value="Post your grumble"
+          />
         </div>
         <div id="image-buttons">
-        <button id="submit" class="upload-photo" onClick={UploadImage}>Upload Photo</button> <br></br>
-        <input
-          type="file" className="upload-photo"
-          onChange={(event) => {
-            setImageUpload(event.target.files[0]);
-          }}
-        />
+          <button id="submit" class="upload-photo" onClick={UploadImage}>
+            Upload Photo
+          </button>{' '}
+          <br></br>
+          <input
+            type="file"
+            className="upload-photo"
+            onChange={(event) => {
+              setImageUpload(event.target.files[0]);
+            }}
+          />
         </div>
-        {imageList
-          .map((url) => {
-            return <img src={url} class="center" />;
-          })
-          .reverse()}{" "}
       </form>
     </>
   );
