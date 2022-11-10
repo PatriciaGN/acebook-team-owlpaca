@@ -1,8 +1,23 @@
 const mongoose = require('mongoose');
 
+
 const PostSchema = new mongoose.Schema({
-  timestamp: Date,
-  imageURLs: [String],
+  created: {
+    type: Date,
+    default: Date.now,
+  },
+
+  agrees: {
+    type: Number,
+    default: 0,
+  },
+  disagrees: {
+    type: Number,
+    default: 0,
+  },
+
+  imageURL: String,
+
   message: {
     type: String,
     validate: {
@@ -13,6 +28,12 @@ const PostSchema = new mongoose.Schema({
     },
     required: [true],
   },
+
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
+
 });
 
 const Post = mongoose.model('Post', PostSchema);

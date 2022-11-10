@@ -1,40 +1,36 @@
-import React, { useState, useEffect } from "react";
-import errorHandlerMessage from "../errorHandling/errorHandlerMessage";
-import "./CreatePost";
-import { storage } from "./firebase";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import "./CreatePost.css";
+import React, { useState, useEffect } from 'react';
+import errorHandlerMessage from '../errorHandling/errorHandlerMessage';
+import './CreatePost';
+import { storage } from './firebase';
+import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { v4 } from 'uuid';
+import './CreatePost.css';
 
 const CreatePost = ({ navigate, fetchPosts }) => {
-  const token = window.localStorage.getItem("token");
-  const [message, setMessage] = useState("");
+  const token = window.localStorage.getItem('token');
+  const [message, setMessage] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
-  const [imageList, setImageList] = useState([]);
-  const imageListRef = ref(storage, "images/");
-
+  const [image, setImage] = useState("");
+  
   const handleSubmitPost = async (event) => {
     event.preventDefault();
-    if (imageUpload === "" && message === "") return;
+    if (imageUpload === '' && message === '') return;
     if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) return;
-
-    UploadImage();
-
+    
     let response = await fetch("/posts", {
       method: "post",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ message: message, imageUrls: imageList }),
+      body: JSON.stringify({ message: message, imageURL: image}),
     });
-
     if (response.status !== 201) {
-      navigate("/posts");
+      navigate('/posts');
     } else {
       let data = await response.json();
-      window.localStorage.setItem("token", data.token);
-      setMessage("");
+      window.localStorage.setItem('token', data.token);
+      setMessage('');
       fetchPosts();
     }
   };
@@ -43,25 +39,17 @@ const CreatePost = ({ navigate, fetchPosts }) => {
     setMessage(event.target.value);
   };
 
-  const UploadImage = () => {
+  const UploadImage = (event) => {
+    event.preventDefault();
     if (imageUpload == null) return;
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        setImageList((prev) => [...prev, url]);
+        setImage(url)
       });
     });
   };
 
-  useEffect(() => {
-    listAll(imageListRef).then((res) => {
-      res.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImageList((prev) => [...prev, url]);
-        });
-      });
-    });
-  }, []);
 
   return (
     <>
@@ -80,7 +68,6 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           </div>{" "}
         <div id="message-button-container">
           <input class="message-button" id="submit" type="submit" value="Post your grumble" />
-          
         </div>
         <div id="image-buttons">
         <button id="submit" class="upload-photo" onClick={UploadImage}>Upload Photo</button> <br></br>

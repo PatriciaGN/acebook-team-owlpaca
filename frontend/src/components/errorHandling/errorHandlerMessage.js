@@ -4,14 +4,14 @@ const errorHandlerMessage = (message) => {
   if (message === '') {
     return (
       <b><div id="message-error-empty">
-        You need to write some text if you want to express yourself.
+        Would you like to share your grumbly thoughts?
       </div></b>
     );
   } else if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) {
     return (
       <b><div id="message-error-invalid">
-        You have introduced some invalid special characters, good luck next
-        time.
+        You have introduced some invalid special characters; better luck next
+        time!
       </div></b>
     );
   }
