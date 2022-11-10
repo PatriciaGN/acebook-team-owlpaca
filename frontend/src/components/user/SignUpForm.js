@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
 import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
 import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
+<<<<<<< HEAD
 import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import "./signUp.css";
+=======
+
+>>>>>>> main
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [usersName, setUsersName] = useState("");
+<<<<<<< HEAD
   const [profilePicUpload, setProfilePicUpload] = useState(null);
+=======
+>>>>>>> main
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,9 +32,13 @@ const SignUpForm = ({ navigate }) => {
       return;
     if (!usersName.match(/^[a-z ,.'-]*$/i)) return;
 
+<<<<<<< HEAD
     const profilePicURL = await UploadProfilePic();
 
     await fetch("/users", {
+=======
+    fetch("/users", {
+>>>>>>> main
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -48,6 +59,7 @@ const SignUpForm = ({ navigate }) => {
     });
   };
 
+<<<<<<< HEAD
   const UploadProfilePic = async () => {
     return new Promise((resolve) => {
       const imageRef = ref(
@@ -62,6 +74,8 @@ const SignUpForm = ({ navigate }) => {
     });
   };
 
+=======
+>>>>>>> main
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -76,6 +90,7 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
+<<<<<<< HEAD
       <center>
         <h1>Sign-up</h1>
         <br />
@@ -125,6 +140,37 @@ const SignUpForm = ({ navigate }) => {
         <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
         <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
       </center>
+=======
+   
+      <h1>Sign-up</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Email"
+          id="email"
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+        />
+        <input
+          placeholder="Password"
+          id="password"
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+        <input
+          placeholder="Name"
+          id="usersName"
+          type="text"
+          value={usersName}
+          onChange={handleUsersNameChange}
+        />
+        <input id="submit" type="submit" value="Submit" />
+      </form>
+      <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
+      <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
+      <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
+>>>>>>> main
     </>
   );
 };

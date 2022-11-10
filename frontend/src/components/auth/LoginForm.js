@@ -3,6 +3,7 @@ import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
 import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
 import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
 
+
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,6 +46,7 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <>
+   
       <h1>Log-in</h1>
       <form onSubmit={handleSubmit}>
         <input
