@@ -1,3 +1,5 @@
+import './AgreesAndDisagrees.css';
+
 const AgreesAndDisagrees = ({ post_id, fetchPosts }) => {
   const token = window.localStorage.getItem('token');
 
@@ -47,22 +49,27 @@ const AgreesAndDisagrees = ({ post_id, fetchPosts }) => {
 
   return (
     <>
-      <button
-        onClick={addAgree}
-        className="agree-button"
-        type="submit"
-        value="Agree"
-      >
-        Agree
-      </button>
-      <button
-        onClick={addDisagree}
-        className="disagree-button"
-        type="submit"
-        value="Disagree"
-      >
-        Disagree
-      </button>
+      <div id="agree-disagree-buttons">
+        <button
+          onClick={addAgree}
+          className="agree-button"
+          type="submit"
+          value="Agree"
+        >
+          {' '}
+          👍🏽 Agree
+        </button>
+
+        <button
+          onClick={addDisagree}
+          className="disagree-button"
+          type="submit"
+          value="Disagree"
+        >
+          {' '}
+          👎🏽 Disagree
+        </button>
+      </div>
     </>
   );
 };
