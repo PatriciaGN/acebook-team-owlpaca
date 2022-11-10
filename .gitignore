@@ -66,4 +66,5 @@ cypress/videos
 frontend/cypress/videos
 frontend/cypress/screenshots
 
-.DS_Store  
+.DS_Store 
+api/spec/.DS_Store
