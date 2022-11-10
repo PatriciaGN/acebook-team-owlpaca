@@ -50,7 +50,7 @@ const Post = ({ post, navigate }) => {
     
       <Hates />
       <div id="message-box">
-            <NewComment  fetchComments={fetchComments} postd={post._id}/>
+            <NewComment  fetchComments={fetchComments} post_id={post._id}/>
       </div>
       <div id='feed' role='feed'>
         {comments.map(

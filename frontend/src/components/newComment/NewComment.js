@@ -7,6 +7,7 @@ const NewComment = ({ post_id, fetchComments }) => {
   const [message, setMessage] = useState("");
 
   const handleSubmitComment = async(event) => {
+
     event.preventDefault();
     if (message === "") return;
     let response = await fetch("/comments", {
