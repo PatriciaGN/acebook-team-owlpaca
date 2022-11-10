@@ -54,9 +54,8 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet"></link>   
-    <body>
-      <h1>GrumpyBook</h1>
+    <div id='main-signup-container'>
+      <h1>Sign-up</h1>
       <div class="container">
         <form class="form-sign-up" onSubmit={handleSubmit}>
         <h2 class="form-signin-heading">Sign-up</h2>
@@ -90,10 +89,10 @@ const SignUpForm = ({ navigate }) => {
           <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
         </div>   
         <div>
-          <img src={require('./Kylepixel.png')} alt="Kyle" />
+          <img id="KyleImage" src={require('../../images/Kylepixel.png')} alt="Kyle" />
         </div>
       </div>
-      </body>
+      </div>
     </>
   );
 };

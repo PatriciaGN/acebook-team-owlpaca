@@ -1,4 +1,12 @@
-#main-signup-container {
+h1 {
+  font-family: 'Kemco Pixel', sans-serif;
+  font-size: 40px;
+  color: white;  
+  text-shadow: 4px 4px black;
+  line-height: 40px;                               
+}
+
+body {
     line-height: 25px;
     text-align: center;
     margin-top: 3em;
@@ -12,14 +20,6 @@
     gap: 10px
 }
 
-h1 {
-    font-family: 'Kemco Pixel', sans-serif;
-    font-size: 40px;
-    color: white;  
-    text-shadow: 4px 4px black;
-    line-height: 40px;                               
-}
-
 #submit {
     box-shadow: 3px 3px black;
 }
@@ -29,7 +29,7 @@ form {
     margin-top: 0em;
 }
 
-.form-sign-up {
+.form-log-in {
     max-width: 300px;
     max-height: 300px;
     padding: 19px 19px 19px 19px;
@@ -39,6 +39,11 @@ form {
 
 h2 {
     font-size: 18px;
+    font-family: 'TheGoodMonolith', sans-serif;
+}
+
+input {
+    font-family: 'TheGoodMonolith', sans-serif;
 }
 
 .box {
@@ -54,7 +59,7 @@ h2 {
     box-shadow: 10px 10px black;
   }
 
-  .sb1:before {
+  .sb2:before {
     content: "";
     width: 0px;
     height: 0px;
@@ -68,7 +73,7 @@ h2 {
     box-shadow: 0px 10px black;
   }
 
-  #KyleImage {
+#KyleImage {
     height: 400px;
     width: 90%;
 }

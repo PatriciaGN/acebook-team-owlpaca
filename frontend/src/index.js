@@ -9,8 +9,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
+    <link href="https://fonts.cdnfonts.com/css/kemco-pixel" rel="stylesheet"></link>
     <link href="https://fonts.cdnfonts.com/css/thegoodmonolith" rel="stylesheet">
     </link>
+    <h1 id="title-on-index">GrumbleBook</h1>
       <App />
     </React.StrictMode>
   </BrowserRouter>
