@@ -7,6 +7,7 @@ const NavLoggedIn = () => {
     <>
        <nav className="nav">
       <a href="/" className="site-title">Acebook</a>
+      <ul>
         <li>
           <a href="/">profile</a>
         </li>
@@ -17,6 +18,7 @@ const NavLoggedIn = () => {
         <li>
           <a href="/login">logout</a>
         </li>
+      </ul>
     </nav>
     </>
   );

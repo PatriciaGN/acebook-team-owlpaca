@@ -14,7 +14,7 @@ const App = () => {
  
     return (
       <>
-        <Navbar />
+       <Navbar />
         <Routes>
           <Route path='/posts'  element={<Feed navigate={ useNavigate() }/>}/>
           <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
