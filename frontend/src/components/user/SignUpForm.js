@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
-import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
-import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
-
+import React, { useState } from 'react';
+import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
+import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
+import errorHandlerPassword from '../errorHandling/errorHandlerPassword';
+import "./SignUpForm.css";
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -55,35 +55,45 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-   
+    <div id='main-signup-container'>
       <h1>Sign-up</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Email"
-          id="email"
-          type="text"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <input
-          placeholder="Password"
-          id="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <input
-          placeholder="Name"
-          id="usersName"
-          type="text"
-          value={usersName}
-          onChange={handleUsersNameChange}
-        />
-        <input id="submit" type="submit" value="Submit" />
-      </form>
-      <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
-      <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
-      <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
+      <div class="container">
+        <form class="form-sign-up" onSubmit={handleSubmit}>
+        <h2 class="form-signin-heading">Sign-up</h2>
+            <input
+              placeholder="Name"
+              id="usersName"
+              type="text"
+              value={usersName}
+              onChange={handleUsersNameChange}
+             /><br></br>
+            <input
+              placeholder="Email"
+              id="email"
+              type="text"
+              value={email}
+              onChange={handleEmailChange}
+            /><br></br>
+            <input
+              placeholder="Password"
+              id="password"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            /><br></br>
+            <br></br>
+            <input id="submit" type="submit" value="Submit" />
+          </form>
+        <div class="box sb1">
+          <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
+          <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
+          <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
+        </div>   
+        <div>
+          <img id="KyleImage" src={require('../../images/Kylepixel.png')} alt="Kyle" />
+        </div>
+      </div>
+      </div>
     </>
   );
 };

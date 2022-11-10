@@ -37,7 +37,7 @@ const Feed = ({ navigate }) => {
     return (
       <>
         <div id="post-body">
-          <h2 id="posts-heading">Posts</h2>
+          <h2 id="posts-heading">Grumble Feed</h2>
           <div id="message-box">
             <CreatePost fetchPosts={fetchPosts} navigate={navigate} />
           </div>
