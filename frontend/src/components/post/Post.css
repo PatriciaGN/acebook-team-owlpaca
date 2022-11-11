@@ -20,6 +20,7 @@ article {
   height: 50px;
   border-radius: 60px;
   object-fit: cover;
+  margin-right: 6px;
 }
 
 .name-and-time-container {
@@ -35,14 +36,12 @@ article {
 
 .post-image-container {
   display: flex;
-  margin: auto;
-  width: 100%;
-  margin-bottom: 6px;
+  margin-bottom: 14px;
 }
 
 .post-image {
   border-radius: 8px;
-  width: 95%;
+  width: 100%
 }
 
 .message-container {
@@ -52,17 +51,15 @@ article {
   flex-direction: column;
   border-radius: 8px;
   margin-bottom: 18px;
-  margin-left: 10px;
   margin-top: 4px;
-  margin-top: 0px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
 }
 
 .message {
   text-align: left;
   margin-left: 10px;
-  color: rgb(0, 0, 0);
+  color: rgb(47, 47, 47);
 }
 
 .agrees-and-disagrees {

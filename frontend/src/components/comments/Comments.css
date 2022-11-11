@@ -10,7 +10,7 @@
 .comment-header {
   display: flex;
   align-items: flex-end;
-  height: 25px;
+  height: 35px;
 }
 
 .comment-header > * {
@@ -40,6 +40,8 @@
   background-color: rgb(255, 255, 255);
   width: auto;
   height: 30px;
-  color: rgb(134, 134, 134);
+  color: rgb(47, 47, 47);
   border-radius: 8px;
+  text-align: left;
+  padding-left: 6px
 }
