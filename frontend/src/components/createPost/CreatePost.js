@@ -7,13 +7,13 @@ import { v4 } from 'uuid';
 import './CreatePost.css';
 
 const CreatePost = ({ navigate, fetchPosts }) => {
-  const token = window.localStorage.getItem("token");
-  const [message, setMessage] = useState("");
+  const token = window.localStorage.getItem('token');
+  const [message, setMessage] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
 
   const handleSubmitPost = async (event) => {
     event.preventDefault();
-    if (imageUpload === "" && message === "") return;
+    if (imageUpload === '' && message === '') return;
     if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) return;
 
     const imageURL = await handleImage();
@@ -21,18 +21,18 @@ const CreatePost = ({ navigate, fetchPosts }) => {
     let response = await fetch('/posts', {
       method: 'post',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
 
       body: JSON.stringify({ message: message, imageURL: imageURL }),
     });
     if (response.status !== 201) {
-      navigate("/posts");
+      navigate('/posts');
     } else {
       let data = await response.json();
-      window.localStorage.setItem("token", data.token);
-      setMessage("");
+      window.localStorage.setItem('token', data.token);
+      setMessage('');
       fetchPosts();
     }
     setImageUpload(null);
@@ -69,7 +69,6 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           value={message}
           onChange={handleMessageChange}
         />
-
         <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{' '}
         <div id="message-button-container">
           <input
@@ -81,7 +80,7 @@ const CreatePost = ({ navigate, fetchPosts }) => {
         </div>
         <div id="image-buttons">
           <button class="submit">
-            <label for="file-upload" className="custom-file-upload">
+            <label for="file-upload" className="custom-file-upload2">
               Upload Grumble jpg or gif
             </label>
           </button>
