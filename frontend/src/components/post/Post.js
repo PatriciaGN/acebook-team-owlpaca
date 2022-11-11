@@ -32,15 +32,18 @@ const Post = ({ post, navigate, fetchPosts }) => {
     }
   };
 
+  console.log(post.author.profilePic);
+  if (post.author.profilePic === undefined) {
+    post.author.profilePic = "https://shorturl.at/bGLT2";
+  }
+
+  console.log(post.author.profilePic);
+
   if (token) {
     return (
       <article data-cy="post" key={post._id}>
         <div class="header-container">
-          <img
-            class="profile-image"
-            src={post.author.profilePic}
-            alt="https://avatarfiles.alphacoders.com/654/thumb-1920-65419.jpg"
-          />
+          <img class="profile-image" src={post.author.profilePic} />
           <div class="name-and-time-container">
             <div class="username">{post.author.usersName} grumbled</div>
             <div class="post-time">{timestamp}</div>

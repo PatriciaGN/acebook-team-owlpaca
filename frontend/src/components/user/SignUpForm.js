@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
 import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
@@ -8,13 +7,11 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import "./SignUpForm.css";
 
-
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [usersName, setUsersName] = useState("");
   const [profilePicUpload, setProfilePicUpload] = useState(null);
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -51,8 +48,10 @@ const SignUpForm = ({ navigate }) => {
     });
   };
 
-
   const UploadProfilePic = async () => {
+    if (profilePicUpload === null) {
+      return;
+    }
     return new Promise((resolve) => {
       const imageRef = ref(
         storage,
@@ -80,55 +79,75 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-    <div id='main-signup-container'>
-      <h1>Sign-up</h1>
-      <div class="container">
-        <form class="form-sign-up" onSubmit={handleSubmit}>
-        <h2 class="form-signin-heading">Sign-up</h2>
+      <div id="main-signup-container">
+        <h1>Sign-up</h1>
+        <div class="container">
+          <form class="form-sign-up" onSubmit={handleSubmit}>
+            <h2 class="form-signin-heading">Sign-up</h2>
             <input
               placeholder="Name"
               id="usersName"
               type="text"
               value={usersName}
               onChange={handleUsersNameChange}
-             /><br></br>
+            />
+            <br></br>
             <input
               placeholder="Email"
               id="email"
               type="text"
               value={email}
               onChange={handleEmailChange}
-            /><br></br>
+            />
+            <br></br>
             <input
               placeholder="Password"
               id="password"
               type="password"
               value={password}
               onChange={handlePasswordChange}
-            /><br></br>
+            />
+            <br></br>
+            <label for="file-upload" className="custom-file-upload">
+              Choose your vain selfie!
+            </label>
             <br></br>
             <input id="submit" type="submit" value="Submit" />
-             <label for="file-upload" className="custom-file-upload">
-            Choose your vain seflie!
-          </label>
-          <input
-            id="file-upload"
-            type="file"
-            onChange={(event) => {
-              setProfilePicUpload(event.target.files[0]);
-            }}
-          />
+
+            <input
+              id="file-upload"
+              type="file"
+              onChange={(event) => {
+                setProfilePicUpload(event.target.files[0]);
+              }}
+            />
           </form>
-        <div class="box sb1">
-          <div id="ErrorMessagePassword">{errorHandlerUsersName(usersName)}</div>
-          <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
-          <div id="ErrorMessagePassword">{errorHandlerPassword(password)}</div>
-        </div>   
-        <div>
-          <img id="KyleImage" src={require('../../images/Kylepixel.png')} alt="Kyle" />
+          <div class="box sb1">
+            <div id="ErrorMessagePassword">
+              {errorHandlerUsersName(usersName)}
+            </div>
+            <div id="ErrorMessageEmail">{errorHandlerEmail(email)}</div>
+            <div id="ErrorMessagePassword">
+              {errorHandlerPassword(password)}
+            </div>
+          </div>
+          <div>
+            <img
+              id="KyleImage"
+              src={require("../../images/Kylepixel.png")}
+              alt="Kyle"
+            />
+          </div>
         </div>
       </div>
-      </div>
+      <audio
+        hidden
+        controls
+        autoPlay
+        src={
+          "https://www.soundjay.com/communication/sounds/dial-up-modem-02.mp3"
+        }
+      ></audio>
     </>
   );
 };
