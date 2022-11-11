@@ -1,5 +1,9 @@
 import "./navbar.css"
 
+const logout = () => {
+  window.localStorage.removeItem('token');
+};
+
 
 const NavLoggedIn = () => {
  
@@ -16,7 +20,7 @@ const NavLoggedIn = () => {
         </li>
 
         <li>
-          <a href="/login">Logout</a>
+          <a onClick={ logout }href="/login">Logout</a>
         </li>
       </ul>
     </nav>
