@@ -1,35 +1,21 @@
 import React, { useState } from 'react';
 
 const Homepage = ({ navigate }) => {
-  const handleLoginClick = async (event) => {
-    event.preventDefault();
-    navigate('/login');
-  };
-
-  const handleSignUpClick = async (event) => {
-    event.preventDefault();
-    navigate('/signup');
-  };
-
   return (
     <>
       <h1>Welcome to Grumblebook</h1>
-      <button
-        onClick={(event) => {
-          handleSignUpClick(event);
-        }}
-      >
-        Sign Up & start grumbling
-      </button>{' '}
-      <br></br>
-      <button
-        onClick={(event) => {
-          handleLoginClick(event);
-        }}
-      >
-        Login & grumble some more
-      </button>{' '}
-      <br></br>
+      <b>
+        <div class="box2 sb4">
+          Welcome to the era of honest grumpy social media!
+        </div>
+      </b>
+      <div>
+        <img
+          id="KyleImageHome"
+          src={require('../../images/Kylepixel.png')}
+          alt="Kyle"
+        />
+      </div>
     </>
   );
 };

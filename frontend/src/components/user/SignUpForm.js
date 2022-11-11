@@ -111,11 +111,9 @@ const SignUpForm = ({ navigate }) => {
 
             <br></br>
             <input class="submit" id="submit" type="submit" value="Submit" />
-            <button class="submit">
-              <label for="file-upload" className="custom-file-upload2">
-                Choose your vain seflie!
-              </label>
-            </button>
+            <label for="file-upload" className="custom-file-upload">
+              Choose your vain seflie!
+            </label>
             <input
               id="file-upload"
               type="file"
