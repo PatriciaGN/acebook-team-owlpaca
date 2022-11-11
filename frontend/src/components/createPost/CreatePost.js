@@ -79,11 +79,9 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           />
         </div>
         <div id="image-buttons">
-          <button class="submit">
-            <label for="file-upload" className="custom-file-upload2">
-              Upload Grumble jpg or gif
-            </label>
-          </button>
+          <label for="file-upload" className="custom-file-upload">
+            Upload Grumble jpg or gif
+          </label>
           <input
             id="file-upload"
             type="file"
