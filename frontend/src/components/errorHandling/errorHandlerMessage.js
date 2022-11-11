@@ -9,10 +9,18 @@ const errorHandlerMessage = (message) => {
     );
   } else if (!message.match(/^[a-zA-Z0-9~!@#()`;\-':,.?| ]*$/)) {
     return (
-      <b><div id="message-error-invalid">
-        You have introduced some invalid special characters; better luck next
-        time!
-      </div></b>
+      <b>
+        <div id="message-error-invalid">
+          You have introduced some invalid special characters; better luck next
+          time!
+        </div>
+      </b>
+    );
+  } else {
+    return (
+      <b>
+        <div id="message-error-ok">That looks perfect!</div>
+      </b>
     );
   }
 };
