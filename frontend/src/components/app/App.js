@@ -4,7 +4,7 @@ import SignUpForm from '../user/SignUpForm'
 import React, { useState } from 'react';
 import Feed from '../feed/Feed'
 import Homepage from '../homepage/Homepage'
-import Navbar from './navbar'
+import Navbar from '../navbar/navbar'
 import {
   useNavigate,
   Routes,
