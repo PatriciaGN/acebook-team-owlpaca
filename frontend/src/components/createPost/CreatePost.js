@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import errorHandlerMessage from "../errorHandling/errorHandlerMessage";
-import "./CreatePost";
-import { storage } from "../../firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import "./CreatePost.css";
+import React, { useState } from 'react';
+import errorHandlerMessage from '../errorHandling/errorHandlerMessage';
+import './CreatePost';
+import { storage } from '../../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from 'uuid';
+import './CreatePost.css';
 
 const CreatePost = ({ navigate, fetchPosts }) => {
   const token = window.localStorage.getItem("token");
@@ -18,8 +18,8 @@ const CreatePost = ({ navigate, fetchPosts }) => {
 
     const imageURL = await handleImage();
 
-    let response = await fetch("/posts", {
-      method: "post",
+    let response = await fetch('/posts', {
+      method: 'post',
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -69,7 +69,8 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           value={message}
           onChange={handleMessageChange}
         />
-        <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{" "}
+
+        <div id="ErrorMessageMessage">{errorHandlerMessage(message)}</div>{' '}
         <div id="message-button-container">
           <input
             class="message-button"
@@ -79,9 +80,11 @@ const CreatePost = ({ navigate, fetchPosts }) => {
           />
         </div>
         <div id="image-buttons">
-          <label for="file-upload" class="message-button">
-            Upload Grumble.jpg or Gif
-          </label>
+          <button class="submit">
+            <label for="file-upload" className="custom-file-upload">
+              Upload Grumble jpg or gif
+            </label>
+          </button>
           <input
             id="file-upload"
             type="file"
