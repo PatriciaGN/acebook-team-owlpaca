@@ -7,6 +7,10 @@ const Comments = ({ comment }) => {
   const fullDate = new Date(comment.commentCreated);
   const timestamp = moment(fullDate).fromNow();
 
+  if (comment.commentUserId.profilePic === undefined) {
+    comment.commentUserId.profilePic = "https://shorturl.at/bGLT2";
+  }
+
   return (
     <>
       <div class="comments-container">
