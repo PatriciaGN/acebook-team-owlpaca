@@ -11,6 +11,8 @@ const errorHandlerPassword = (password) => {
         give us ownership over your soul. :3
       </div>
     );
+  } else {
+    return <div id="password-error-ok">Amazing work with that password.</div>;
   }
 };
 

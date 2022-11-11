@@ -9,6 +9,10 @@ const errorHandlerEmail = (email) => {
         That doesn't look like an email to me. :/
       </div>
     );
+  } else {
+    return (
+      <div id="email-error-ok">That is a what I call a good email address.</div>
+    );
   }
 };
 
