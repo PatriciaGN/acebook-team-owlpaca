@@ -45,8 +45,7 @@ const Post = ({ post, navigate, fetchPosts }) => {
         <div class="header-container">
           <img class="profile-image" src={post.author.profilePic} />
           <div class="name-and-time-container">
-            <div class="username">{post.author.usersName} grumbled</div>
-            <div class="post-time">{timestamp}</div>
+            <div class="username">{post.author.usersName} grumbled {timestamp} </div>
           </div>
         </div>
 
