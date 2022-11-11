@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
 import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
@@ -113,7 +112,7 @@ const SignUpForm = ({ navigate }) => {
             <br></br>
             <input class="submit" id="submit" type="submit" value="Submit" />
             <button class="submit">
-              <label for="file-upload" className="custom-file-upload">
+              <label for="file-upload" className="custom-file-upload2">
                 Choose your vain seflie!
               </label>
             </button>
@@ -148,7 +147,7 @@ const SignUpForm = ({ navigate }) => {
         controls
         autoPlay
         src={
-          "https://www.soundjay.com/communication/sounds/dial-up-modem-02.mp3"
+          'https://www.soundjay.com/communication/sounds/dial-up-modem-02.mp3'
         }
       ></audio>
     </>
