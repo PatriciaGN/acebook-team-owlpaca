@@ -39,6 +39,29 @@ form {
   border-radius: 8px;
 }
 
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  appearance: auto;
+  user-select: none;
+  white-space: pre;
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: buttonface;
+  color: buttontext;
+  padding: 1px 15px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonborder;
+  border-image: initial;
+  box-shadow: 3px 3px black;
+  font-size: 10px;
+}
+
 h2 {
   font-size: 18px;
 }

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
 import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
@@ -49,6 +50,9 @@ const SignUpForm = ({ navigate }) => {
   };
 
   const UploadProfilePic = async () => {
+    if (profilePicUpload === null) {
+      return;
+    }
     return new Promise((resolve) => {
       const imageRef = ref(
         storage,
@@ -105,6 +109,7 @@ const SignUpForm = ({ navigate }) => {
               onChange={handlePasswordChange}
             />
             <br></br>
+
             <br></br>
             <input class="submit" id="submit" type="submit" value="Submit" />
             <button class="submit">
@@ -138,6 +143,14 @@ const SignUpForm = ({ navigate }) => {
           </div>
         </div>
       </div>
+      <audio
+        hidden
+        controls
+        autoPlay
+        src={
+          "https://www.soundjay.com/communication/sounds/dial-up-modem-02.mp3"
+        }
+      ></audio>
     </>
   );
 };

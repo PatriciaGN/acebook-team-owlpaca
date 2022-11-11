@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import errorHandlerEmail from '../errorHandling/errorHandlerEmail';
-import errorHandlerPassword from '../errorHandling/errorHandlerPassword';
-import errorHandlerUsersName from '../errorHandling/errorHandlerUsersName';
-import './LoginForm.css';
+import React, { useState } from "react";
+import errorHandlerEmail from "../errorHandling/errorHandlerEmail";
+import errorHandlerPassword from "../errorHandling/errorHandlerPassword";
+import errorHandlerUsersName from "../errorHandling/errorHandlerUsersName";
+import "./LoginForm.css";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -27,10 +27,10 @@ const LogInForm = ({ navigate }) => {
     });
 
     if (response.status !== 201) {
-      navigate('/login');
+      navigate("/login");
     } else {
       let data = await response.json();
-      window.localStorage.setItem('token', data.token);
+      window.localStorage.setItem("token", data.token);
 
       navigate("/posts");
     }
@@ -87,7 +87,7 @@ const LogInForm = ({ navigate }) => {
         <div>
           <img
             id="KyleImage"
-            src={require('../../images/Kylepixel.png')}
+            src={require("../../images/Kylepixel.png")}
             alt="Kyle"
           />
         </div>
