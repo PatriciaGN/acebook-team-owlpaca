@@ -45,7 +45,9 @@ const Post = ({ post, navigate, fetchPosts }) => {
         <div class="header-container">
           <img class="profile-image" src={post.author.profilePic} />
           <div class="name-and-time-container">
-            <div class="username">{post.author.usersName} grumbled {timestamp} </div>
+            <div class="username">
+              {post.author.usersName} grumbled {timestamp}{" "}
+            </div>
           </div>
         </div>
 
@@ -69,9 +71,9 @@ const Post = ({ post, navigate, fetchPosts }) => {
           <NewComment fetchComments={fetchComments} post_id={post._id} />
         </div>
         <div id="feed" role="feed">
-          {comments
-            .map((comment) => <Comment comment={comment} key={comment._id} />)
-            .reverse()}
+          {comments.map((comment) => (
+            <Comment comment={comment} key={comment._id} />
+          ))}
         </div>
       </article>
     );
