@@ -11,5 +11,6 @@
 }
 
 .submit-button {
+  border-radius: 8px;
   font-size: 11px;
 }

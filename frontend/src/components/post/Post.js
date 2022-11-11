@@ -42,8 +42,7 @@ const Post = ({ post, navigate, fetchPosts }) => {
             alt="https://avatarfiles.alphacoders.com/654/thumb-1920-65419.jpg"
           />
           <div class="name-and-time-container">
-            <div class="username">{post.author.usersName} grumbled</div>
-            <div class="post-time">{timestamp}</div>
+            <div class="username">{post.author.usersName} grumbled {timestamp} </div>
           </div>
         </div>
 

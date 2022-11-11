@@ -17,6 +17,7 @@ p {
 }
 
 .agree-button {
+  border-radius: 5px;
   box-shadow: 3px 3px black;
   padding: 5px;
   margin-right: 5px;
@@ -24,6 +25,7 @@ p {
 }
 
 .disagree-button {
+  border-radius: 5px;
   box-shadow: 3px 3px black;
   padding: 5px;
   margin-left: 5px;
