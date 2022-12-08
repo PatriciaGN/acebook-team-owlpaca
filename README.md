@@ -15,7 +15,7 @@ Acebook is a Facebook-clone developed whilst on the Makers Academy Bootcamp Sept
 - [Miles](https://github.com/Cragg87)
 - [Patricia](https://github.com/PatriciaGN)
 - [Joe](https://github.com/JoeOsborne77)
-- [Hibaq](https://github.com/hibscodes)
+- [Hibaq](https://github.com/HibaqObsiye)
 
 ## User Stories:
 
